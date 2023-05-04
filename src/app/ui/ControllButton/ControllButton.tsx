@@ -24,6 +24,6 @@ export const ControlButton = styled.button<ControlButtonProps>`
       props.active ? props.theme.palette.primary : '#382e44'};
   }
   &:active {
-    background-color: ${(props) => props.theme.palette.primary};
+    opacity: 0.7;
   }
 `;

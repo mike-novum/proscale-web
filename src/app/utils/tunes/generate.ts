@@ -1,5 +1,5 @@
-import {NOTES} from './notes';
-import {
+import { NOTES } from './notes';
+import type {
   FretNotes,
   GammaIntervals,
   GammaNotes,
@@ -8,7 +8,7 @@ import {
   TuningNotes,
 } from './types';
 
-const COUNT_OF_FRETS: number = 26;
+const COUNT_OF_FRETS = 26;
 
 /**
  * Функция для генерации нот на гитарном грифе
@@ -16,11 +16,12 @@ const COUNT_OF_FRETS: number = 26;
  * @returns  - массив нот всего грифа
  */
 export const generateNeck = (tuning: TuningNotes): NeckNotes => {
-  let mass: NeckNotes = [];
+  const mass: NeckNotes = [];
 
+  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < COUNT_OF_FRETS; i++) {
-    let fret: FretNotes = [];
-    tuning.forEach(item => {
+    const fret: FretNotes = [];
+    tuning.forEach((item) => {
       fret.push(`${NOTES[(+item + i) % 12]}`);
     });
     mass.push(fret);
@@ -37,19 +38,19 @@ export const generateNeck = (tuning: TuningNotes): NeckNotes => {
  */
 export const generateGamma = (
   key: NoteKey,
-  intervals: GammaIntervals,
+  intervals: GammaIntervals
 ): GammaNotes => {
-  let array: GammaNotes = [];
+  const array: GammaNotes = [];
 
-  let indexOfKey = NOTES.findIndex(item => item === key);
+  const indexOfKey = NOTES.findIndex((item) => item === key);
 
   let newIntervals: GammaIntervals = Object.assign([], intervals);
 
-  newIntervals = newIntervals.map(item => {
+  newIntervals = newIntervals.map((item) => {
     return (item + indexOfKey) % 12;
   });
 
-  newIntervals.forEach(item => {
+  newIntervals.forEach((item) => {
     array.push(NOTES[item]);
   });
 

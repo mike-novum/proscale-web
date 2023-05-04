@@ -1,4 +1,4 @@
-import {NoteKey} from './types';
+import type { NoteKey } from './types';
 
 export const NOTES: NoteKey[] = [
   'C',

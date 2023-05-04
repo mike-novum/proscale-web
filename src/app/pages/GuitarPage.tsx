@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import styled from 'styled-components';
 
-import { KeyPicker, ScalePicker } from '../components';
+import { GuitarPicker, KeyPicker, ScalePicker } from '../components';
 import type { NoteKey } from '../utils/tunes';
 
 const Page = styled.div`
@@ -31,8 +31,8 @@ export const GuitarPage: FC = () => {
   return (
     <Page>
       <Content>
-        {/* <GuitarPicker />
-        <TuningPicker /> */}
+        <GuitarPicker />
+        {/* <TuningPicker /> */}
         <KeyPicker active={key} onChange={setKey} />
         <ScalePicker active={scale} onChange={setScale} />
       </Content>
