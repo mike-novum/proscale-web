@@ -141,3 +141,11 @@ export const TuningsUkulele: TuningItem[] = [
     notes: ukuleleStandart,
   },
 ];
+
+export const Tunings = {
+  Tunings6,
+  Tunings7,
+  Tunings8,
+  TuningsBass,
+  TuningsUkulele,
+};

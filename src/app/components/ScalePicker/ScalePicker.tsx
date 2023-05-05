@@ -1,29 +1,37 @@
 import type { FC } from 'react';
+import styled from 'styled-components';
 
-import { Scales } from '../../utils/tunes';
+import { ScaleItem, Scales } from '../../utils/tunes';
 import { ControlButton } from '../../ui';
 
 interface ScalePickerProps {
-  active: string;
-  onChange: (key: string) => void;
+  active: ScaleItem;
+  onChange: (scale: ScaleItem) => void;
 }
+
+const PickerWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+`;
 
 export const ScalePicker: FC<ScalePickerProps> = ({ onChange, active }) => {
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 24 }}>
-      {Scales.map((item) => {
+    <PickerWrapper>
+      {Scales.map((scale) => {
         return (
           <ControlButton
-            active={active === item.name}
-            key={item.name}
+            active={active.name === scale.name}
+            key={scale.name}
             onClick={() => {
-              onChange(item.name);
+              onChange(scale);
             }}
           >
-            {item.name}
+            {scale.name}
           </ControlButton>
         );
       })}
-    </div>
+    </PickerWrapper>
   );
 };

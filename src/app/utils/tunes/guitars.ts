@@ -1,5 +1,7 @@
-type Guitar = {
-  key: '6' | '7' | '8' | 'Bass' | 'Ukulele';
+export type GuitarKey = '6' | '7' | '8' | 'Bass' | 'Ukulele';
+
+export type Guitar = {
+  key: GuitarKey;
   name: string;
 };
 
