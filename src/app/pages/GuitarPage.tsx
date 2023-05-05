@@ -31,7 +31,7 @@ const Page = styled.div`
 `;
 
 const Content = styled.div`
-  max-width: 1024px;
+  max-width: 1440px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -66,7 +66,7 @@ export const GuitarPage: FC = () => {
       <Content>
         <GuitarPicker active={guitar} onChange={onChangeGuitar} />
         <TuningPicker active={tuning} tunings={tunings} onChange={setTuning} />
-        <Neck key={key} tuning={tuning} scale={scale} />
+        <Neck noteKey={key} tuning={tuning} scale={scale} />
         <KeyPicker active={key} onChange={setKey} />
         <ScalePicker active={scale} onChange={setScale} />
       </Content>
