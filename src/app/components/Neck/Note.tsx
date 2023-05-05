@@ -1,5 +1,5 @@
 import { FC, memo } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import type { NoteKey } from '../../utils/tunes';
 
@@ -16,6 +16,15 @@ type NoteWrapperProps = {
   isTonica: boolean;
 };
 
+const scaleAnimation = keyframes`
+    0%{
+        transform: scale(0);
+    }    
+    100%{
+        transform: scale(1);
+    }
+`;
+
 const NoteWrapper = styled.div<NoteWrapperProps>`
   background-color: ${(props) =>
     props.isTonica === true ? 'rgb(183 129 255)' : 'rgb(91 75 113)'};
@@ -27,6 +36,9 @@ const NoteWrapper = styled.div<NoteWrapperProps>`
   justify-content: center;
   position: relative;
   transition: 200ms;
+  animation-name: ${(props) => (props.isActive ? scaleAnimation : 'none')};
+  animation-duration: 200ms;
+  animation-direction: alternate;
   transform: scale(${(props) => (props.isActive ? '1' : '0')});
   z-index: 1;
 `;
@@ -40,7 +52,6 @@ const NoteText = styled.div`
 `;
 
 const _Note: FC<NoteProps> = ({ note, tonica, isActive }) => {
-  //   console.log('renderNote');
   return (
     <NoteWrapper isActive={isActive} isTonica={tonica === note}>
       <NoteText>{note}</NoteText>
