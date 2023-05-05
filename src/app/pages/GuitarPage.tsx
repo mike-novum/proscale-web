@@ -44,7 +44,6 @@ const getTunings = (guitarKey: GuitarKey): TuningItem[] => {
 };
 
 export const GuitarPage: FC = () => {
-  // TODO: доработать типы и сделать ключи более умными для гаммы
   const [scale, setScale] = useState<ScaleItem>(Scales[0]);
   const [key, setKey] = useState<NoteKey>('C');
 
