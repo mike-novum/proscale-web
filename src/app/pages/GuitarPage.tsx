@@ -31,11 +31,12 @@ const Page = styled.div`
 `;
 
 const Content = styled.div`
-  max-width: 1440px;
+  /* max-width: 1440px; */
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   height: 100%;
 `;
 

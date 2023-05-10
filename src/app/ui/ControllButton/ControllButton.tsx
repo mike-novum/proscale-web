@@ -6,8 +6,7 @@ interface ControlButtonProps {
 }
 export const ControlButton = styled.button<ControlButtonProps>`
   font-weight: 600;
-  background: ${(props) =>
-    props.active ? props.theme.palette.primary : props.theme.palette.primary3};
+
   color: ${(props) => props.theme.palette.text};
   border: none;
   height: 44px;
@@ -15,13 +14,17 @@ export const ControlButton = styled.button<ControlButtonProps>`
   border-radius: 22px;
   padding: 0px 16px;
   vertical-align: middle;
-  transition: 0.2s;
-  font-size: 14px;
   text-transform: uppercase;
+  font-size: 14px;
   cursor: pointer;
+  transition: 0.2s;
+  background: ${(props) =>
+    props.active ? props.theme.gradients.main : props.theme.palette.primary4};
   &:hover {
     background-color: ${(props) =>
-      props.active ? props.theme.palette.primary : '#382e44'};
+      props.active
+        ? props.theme.palette.primary
+        : props.theme.palette.primary4};
   }
   &:active {
     opacity: 0.7;

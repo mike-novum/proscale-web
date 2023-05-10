@@ -1,6 +1,5 @@
 /* eslint-disable react/no-array-index-key */
 import type { FC } from 'react';
-import styled from 'styled-components';
 
 import {
   NoteKey,
@@ -10,6 +9,12 @@ import {
   generateNeck,
 } from '../../utils/tunes';
 import { Note } from './Note';
+import { Strings } from './Strings';
+import { FretWrapper } from './FretWrapper';
+import { FretCell } from './FretCell';
+import { NeckWrapper } from './NeckWrapper';
+import { FretsWrapper } from './FretsWrapper';
+import { FretNumber } from './FretNumbers';
 
 export interface NeckProps {
   noteKey: NoteKey;
@@ -17,37 +22,8 @@ export interface NeckProps {
   scale: ScaleItem;
 }
 
-const NeckWrapper = styled.div`
-  position: relative;
-  background: #101010;
-  height: 300px;
-  /* display: flex; */
-  /* flex-direction: column;
-  justify-content: center; */
-  display: flex;
-  gap: 3px;
-  margin: 24px 0px;
-`;
-
-const FretWrapper = styled.div`
-  height: 100%;
-  position: relative;
-  box-sizing: border-box;
-  background: #18171f;
-  width: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 16px 0px;
-`;
-
-const FretCell = styled.div`
-  width: 100%;
-  height: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+const calculateWidth = (index: number) =>
+  Math.trunc(-Math.sqrt(40 * index) + 80);
 
 export const Neck: FC<NeckProps> = ({ noteKey, tuning, scale }) => {
   const neckNotes = generateNeck(tuning.notes);
@@ -55,48 +31,32 @@ export const Neck: FC<NeckProps> = ({ noteKey, tuning, scale }) => {
 
   return (
     <NeckWrapper>
-      {neckNotes.map((fret, fretIndex) => {
-        return (
-          <FretWrapper key={fret.join('') + fretIndex}>
-            {fret.reverse().map((note, noteIndex) => (
-              <FretCell key={note + noteIndex}>
-                <Note
-                  isActive={scaleNotes.find((nt) => nt === note) !== undefined}
-                  tonica={noteKey}
-                  note={note}
-                />
-              </FretCell>
-            ))}
-          </FretWrapper>
-        );
-      })}
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          boxSizing: 'border-box',
-          padding: '16px 0px',
-        }}
-      >
-        {tuning.notes.map((_, index) => {
+      <FretsWrapper>
+        {neckNotes.map((fret, fretIndex) => {
+          const width = calculateWidth(fretIndex);
           return (
-            <div
-              key={index}
-              style={{
-                height: '2px',
-                width: '100%',
-                background: '#AA84FA',
-              }}
-            />
+            <FretWrapper
+              isZeroFret={fretIndex === 0}
+              key={fret.join('') + fretIndex}
+              width={width}
+            >
+              {fret.reverse().map((note, noteIndex) => (
+                <FretCell key={note + noteIndex}>
+                  <Note
+                    isActive={
+                      scaleNotes.find((nt) => nt === note) !== undefined
+                    }
+                    tonica={noteKey}
+                    note={note}
+                  />
+                </FretCell>
+              ))}
+              <FretNumber value={fretIndex} width={width} />
+            </FretWrapper>
           );
         })}
-      </div>
+        <Strings count={tuning.notes.length} />
+      </FretsWrapper>
     </NeckWrapper>
   );
 };

@@ -26,8 +26,10 @@ const scaleAnimation = keyframes`
 `;
 
 const NoteWrapper = styled.div<NoteWrapperProps>`
-  background-color: ${(props) =>
-    props.isTonica === true ? 'rgb(183 129 255)' : 'rgb(91 75 113)'};
+  background: ${(props) =>
+    props.isTonica === true
+      ? props.theme.gradients.main
+      : props.theme.palette.primary3};
   width: ${SIZE}px;
   height: ${SIZE}px;
   border-radius: ${SIZE / 2}px;
