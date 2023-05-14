@@ -9,10 +9,12 @@ interface FretNumberProps {
   direction: NeckDirection;
 }
 
-const FretNumberWrapper = styled.div<{
+interface FretNumberWrapperProps {
   direction: NeckDirection;
   size: number;
-}>`
+}
+
+const FretNumberWrapper = styled.div<FretNumberWrapperProps>`
   position: absolute;
   display: flex;
   align-items: center;
