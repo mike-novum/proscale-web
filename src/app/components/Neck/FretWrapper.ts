@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
+import type { NeckDirection } from './types';
+
 interface FretWrapperProps {
   isZeroFret?: boolean;
-  width?: number;
+  size?: number;
+  direction: NeckDirection;
 }
 
 export const FretWrapper = styled.div<FretWrapperProps>`
@@ -13,10 +16,40 @@ export const FretWrapper = styled.div<FretWrapperProps>`
     props.isZeroFret
       ? props.theme.palette.black3
       : props.theme.palette.primary4};
-  border-right: ${(props) => (props.isZeroFret ? '8px solid white' : 'none')};
-  width: ${(props) => (props.width ? `${props.width}px` : '50px')};
+
+  border-right: ${(props) => {
+    if (props.direction === 'vertical') {
+      return 'none';
+    }
+    return props.isZeroFret ? '8px solid white' : 'none';
+  }};
+
+  border-bottom: ${(props) => {
+    if (props.direction === 'horizontal') {
+      return 'none';
+    }
+    return props.isZeroFret ? '8px solid white' : 'none';
+  }};
+
   display: flex;
-  flex-direction: column;
+  flex-direction: ${(props) =>
+    props.direction === 'vertical' ? 'row' : 'column'};
   justify-content: space-between;
-  padding: 16px 0px;
+  padding: ${(props) =>
+    props.direction === 'vertical' ? '0px 16px' : ' 16px 0px'};
+  transition: 0.3s;
+
+  width: ${(props) => {
+    if (props.direction === 'vertical') {
+      return 'auto';
+    }
+    return props.size ? `${props.size}px` : '50px';
+  }};
+
+  height: ${(props) => {
+    if (props.direction === 'horizontal') {
+      return 'auto';
+    }
+    return props.size ? `${props.size}px` : '50px';
+  }};
 `;

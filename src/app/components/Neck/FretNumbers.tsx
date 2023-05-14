@@ -1,23 +1,39 @@
-import type { FC } from 'react';
+import type { CSSProperties, FC } from 'react';
+import styled from 'styled-components';
+
+import type { NeckDirection } from './types';
 
 interface FretNumberProps {
   value: number;
-  width: number;
+  size: number;
+  direction: NeckDirection;
 }
-export const FretNumber: FC<FretNumberProps> = ({ value, width }) => {
+
+const FretNumberWrapper = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const FretNumber: FC<FretNumberProps> = ({ value, size, direction }) => {
+  const vStyles: CSSProperties = {
+    top: 0,
+    right: 'calc(100% + 15px)',
+    width: '45px',
+    height: size,
+  };
+
+  const hStyles: CSSProperties = {
+    left: 0,
+    top: 'calc(100% + 15px)',
+    height: '45px',
+    width: size,
+  };
+
   return (
-    <div
-      style={{
-        position: 'absolute',
-        // background: '#ff0095',
-        height: '45px',
-        left: 0,
-        top: 'calc(100% + 15px)',
-        width,
-        textAlign: 'center',
-      }}
-    >
-      {value}
-    </div>
+    <FretNumberWrapper style={direction === 'vertical' ? vStyles : hStyles}>
+      <div>{value}</div>
+    </FretNumberWrapper>
   );
 };

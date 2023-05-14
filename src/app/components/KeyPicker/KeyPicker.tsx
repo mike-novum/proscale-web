@@ -15,6 +15,11 @@ const PickerWrapper = styled.div`
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 24px;
+  max-width: 1024px;
+  background: rgb(48 53 73);
+  box-sizing: border-box;
+  padding: 16px;
+  border-radius: 20px;
 `;
 
 export const KeyPicker: FC<KeyPickerProps> = ({ active, onChange }) => {

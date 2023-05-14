@@ -12,10 +12,15 @@ interface ScalePickerProps {
 const PickerWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  -webkit-box-pack: center;
   justify-content: center;
   gap: 8px;
   margin-top: 24px;
-  max-width: 1440px;
+  max-width: 1024px;
+  background: rgb(48 53 73);
+  box-sizing: border-box;
+  padding: 16px;
+  border-radius: 20px;
 `;
 
 export const ScalePicker: FC<ScalePickerProps> = ({ onChange, active }) => {
