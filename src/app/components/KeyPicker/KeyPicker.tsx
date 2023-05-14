@@ -14,7 +14,7 @@ const PickerWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 24px;
+  margin: 68px 0px 24px;
   max-width: 1024px;
   background: rgb(48 53 73);
   box-sizing: border-box;

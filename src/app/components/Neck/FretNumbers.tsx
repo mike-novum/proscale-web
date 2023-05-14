@@ -1,4 +1,4 @@
-import type { CSSProperties, FC } from 'react';
+import type { FC } from 'react';
 import styled from 'styled-components';
 
 import type { NeckDirection } from './types';
@@ -9,30 +9,45 @@ interface FretNumberProps {
   direction: NeckDirection;
 }
 
-const FretNumberWrapper = styled.div`
+const FretNumberWrapper = styled.div<{
+  direction: NeckDirection;
+  size: number;
+}>`
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 200ms;
+
+  width: ${(props) =>
+    props.direction === 'vertical' ? '32px' : `${props.size}px`};
+  height: ${(props) =>
+    props.direction === 'horizontal' ? '32px' : `${props.size}px`};
+
+  top: ${(props) =>
+    props.direction === 'vertical' ? '0px' : 'calc(100% + 15px)'};
+
+  left: ${(props) => (props.direction === 'horizontal' ? '0px' : undefined)};
+
+  right: ${(props) =>
+    props.direction === 'vertical' ? 'calc(100% + 15px)' : undefined};
+
+  @media (max-width: 1024px) {
+    width: 30px;
+  }
+  @media (max-width: 768px) {
+    font-size: 12px;
+    width: 25px;
+  }
+  @media (max-width: 375px) {
+    right: calc(100% + 5px);
+    width: 20px;
+  }
 `;
 
 export const FretNumber: FC<FretNumberProps> = ({ value, size, direction }) => {
-  const vStyles: CSSProperties = {
-    top: 0,
-    right: 'calc(100% + 15px)',
-    width: '45px',
-    height: size,
-  };
-
-  const hStyles: CSSProperties = {
-    left: 0,
-    top: 'calc(100% + 15px)',
-    height: '45px',
-    width: size,
-  };
-
   return (
-    <FretNumberWrapper style={direction === 'vertical' ? vStyles : hStyles}>
+    <FretNumberWrapper direction={direction} size={size}>
       <div>{value}</div>
     </FretNumberWrapper>
   );

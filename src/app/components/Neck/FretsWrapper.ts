@@ -15,10 +15,9 @@ export const FretsWrapper = styled.div<FretsWrapperProps>`
   flex-direction: ${(props) =>
     props.direction === 'vertical' ? 'column' : 'row'};
   gap: 4px;
-  margin: 48px 0px;
 
   @media (max-width: 1024px) {
-    width: 320px;
+    width: 400px;
   }
   @media (max-width: 768px) {
     width: 320px;
