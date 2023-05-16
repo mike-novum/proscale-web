@@ -33,7 +33,7 @@ deliver:
     - chmod 600 ~/.ssh/id_rsa
     - ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
   variables:
-    PROJECT_PATH: $SERVER_PATH/$CI_PROJECT_NAME
+    PROJECT_PATH: $PROJECTS_PATH/$CI_PROJECT_NAME
   script:
     - ls -Alh
     - echo "Delivering..."
@@ -54,6 +54,7 @@ deliver:
     - echo "Delivery completed"
 
 deploy:
+  stage: deploy
   # trigger downstream pipeline job with name "restart"
   trigger:
     project: novumweb/infrastructure
