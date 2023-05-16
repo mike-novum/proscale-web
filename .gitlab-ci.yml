@@ -1,0 +1,62 @@
+stages:
+  - build
+  - deploy
+
+build_astro:
+  stage: build
+  image: node:lts-alpine
+  script:
+    # print working directory files and subdirectories
+    - ls -Alh
+    # install dependencies
+    - npm ci
+    # build the project
+    - npm run build
+    # print the build directory files and subdirectories
+    - ls -Alh
+    - ls -Alh dist
+  # cache dist directory
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - dist
+
+deliver:
+  stage: deploy
+  needs:
+    - job: build_astro
+  image: alpine:latest
+  before_script:
+    - apk add --no-cache openssh-client
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
+  variables:
+    PROJECT_PATH: $SERVER_PATH/$CI_PROJECT_NAME
+  script:
+    - ls -Alh
+    - echo "Delivering..."
+
+    # ensure that the server directory exists
+    - ssh $SERVER_USER@$SERVER_IP "mkdir -p $PROJECT_PATH"
+    - echo "Project directory created"
+
+    # remove the dist directory if it exists
+    - ssh $SERVER_USER@$SERVER_IP "rm -rf $PROJECT_PATH"
+    - echo "Project directory removed"
+
+    - scp -i ~/.ssh/id_rsa -r dist/* $SERVER_USER@$SERVER_IP:$PROJECT_PATH
+
+    # print the server directory files and subdirectories
+    - ssh $SERVER_USER@$SERVER_IP "ls -Alh $PROJECT_PATH"
+
+    - echo "Delivery completed"
+
+deploy:
+  # trigger downstream pipeline job with name "restart"
+  trigger:
+    project: novumweb/infrastructure
+    strategy: depend
+  needs:
+    - deliver
