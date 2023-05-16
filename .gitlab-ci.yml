@@ -52,6 +52,10 @@ deliver:
     - ssh $SERVER_USER@$SERVER_IP "ls -Alh $PROJECT_PATH"
 
     - echo "Delivery completed"
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - dist
 
 deploy:
   stage: deploy
