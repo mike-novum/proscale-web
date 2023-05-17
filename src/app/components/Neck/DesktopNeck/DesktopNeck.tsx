@@ -1,5 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import type { FC } from 'react';
+import styled from 'styled-components';
 
 import {
   NoteKey,
@@ -7,22 +8,24 @@ import {
   TuningItem,
   generateGamma,
   generateNeck,
-} from '../../utils/tunes';
-import { Note } from './Note';
-import { Strings } from './Strings';
-import { FretWrapper } from './FretWrapper';
-import { FretCell } from './FretCell';
-import { NeckWrapper } from './NeckWrapper';
-import { FretsWrapper } from './FretsWrapper';
-import { FretNumber } from './FretNumbers';
-import { useWindowSize } from '../../utils/window';
-import type { NeckDirection } from './types';
+} from '../../../utils/tunes';
+import { useWindowSize } from '../../../utils/window';
+import {
+  FretCell,
+  FretNumber,
+  FretNumbersWrapper,
+  FretWrapper,
+  FretsWrapper,
+  NeckWrapper,
+  Note,
+  Strings,
+} from './components';
+import { isBigFret } from '../utils';
 
 export interface NeckProps {
   noteKey: NoteKey;
   tuning: TuningItem;
   scale: ScaleItem;
-  direction?: NeckDirection;
 }
 
 const getFretWidth = (screenWidth: number | undefined): number => {
@@ -50,40 +53,59 @@ const getFretWidth = (screenWidth: number | undefined): number => {
   return 80;
 };
 
+const FRET_MARKER_SIZE = 18;
+const FretMarker = styled.div`
+  position: absolute;
+  top: calc(50% - ${FRET_MARKER_SIZE / 2}px);
+  left: calc(50% - ${FRET_MARKER_SIZE / 2}px);
+  width: ${FRET_MARKER_SIZE}px;
+  height: ${FRET_MARKER_SIZE}px;
+  border-radius: ${FRET_MARKER_SIZE / 2}px;
+  background-color: ${(props) => props.theme.palette.black2};
+`;
+
 const calculateWidth = (index: number, fretSize: number) =>
   Math.trunc(-Math.sqrt(40 * index) + fretSize);
 
-export const Neck: FC<NeckProps> = ({
-  noteKey,
-  tuning,
-  scale,
-  direction = 'horizontal',
-}) => {
+const getNeckHeight = (stringCount: number): number => {
+  if (stringCount === 4) {
+    return 250;
+  }
+  if (stringCount === 7) {
+    return 310;
+  }
+  if (stringCount === 8) {
+    return 320;
+  }
+
+  return 300;
+};
+
+export const DesktopNeck: FC<NeckProps> = ({ noteKey, tuning, scale }) => {
   const neckNotes = generateNeck(tuning.notes);
   const scaleNotes = generateGamma(noteKey, scale.intervals);
 
   const { width: screenWidth } = useWindowSize();
-  const fretSize = direction === 'vertical' ? 65 : getFretWidth(screenWidth);
+  const fretSize = getFretWidth(screenWidth);
 
   return (
     <NeckWrapper>
-      <FretsWrapper direction={direction}>
+      <FretsWrapper height={getNeckHeight(tuning.notes.length)}>
         {neckNotes.map((fret, fretIndex) => {
           const width = calculateWidth(
             fretIndex,
             fretSize > 80 ? 80 : fretSize
           );
 
-          const _fret = direction === 'vertical' ? fret : fret.reverse();
+          const _fret = fret.reverse();
           return (
             <FretWrapper
               isZeroFret={fretIndex === 0}
               key={fret.join('') + fretIndex}
               size={width}
-              direction={direction}
             >
               {_fret.map((note, noteIndex) => (
-                <FretCell direction={direction} key={note + noteIndex}>
+                <FretCell key={note + noteIndex}>
                   <Note
                     isActive={
                       scaleNotes.find((nt) => nt === note) !== undefined
@@ -93,16 +115,28 @@ export const Neck: FC<NeckProps> = ({
                   />
                 </FretCell>
               ))}
-              <FretNumber
-                direction={direction}
-                value={fretIndex}
-                size={width}
-              />
+              {isBigFret(fretIndex) ? <FretMarker /> : null}
             </FretWrapper>
           );
         })}
-        <Strings direction={direction} count={tuning.notes.length} />
+        <Strings count={tuning.notes.length} />
       </FretsWrapper>
+      <FretNumbersWrapper>
+        {neckNotes.map((fret, fretIndex) => {
+          const width = calculateWidth(
+            fretIndex,
+            fretSize > 80 ? 80 : fretSize
+          );
+
+          return (
+            <FretNumber
+              key={fret.join('') + fretIndex}
+              value={fretIndex}
+              size={width}
+            />
+          );
+        })}
+      </FretNumbersWrapper>
     </NeckWrapper>
   );
 };

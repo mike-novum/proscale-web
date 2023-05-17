@@ -1,7 +1,7 @@
 import { FC, memo } from 'react';
 import styled, { keyframes } from 'styled-components';
 
-import type { NoteKey } from '../../utils/tunes';
+import type { NoteKey } from '../../../../utils/tunes';
 
 export interface NoteProps {
   tonica: NoteKey;
@@ -31,11 +31,12 @@ const NoteWrapper = styled.div<NoteWrapperProps>`
   background: ${(props) =>
     props.isTonica === true
       ? props.theme.gradients.main
-      : props.theme.palette.primary3};
+      : props.theme.colors.primary};
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  user-select: none;
 
   transition: 200ms;
   animation-name: ${(props) => (props.isActive ? scaleAnimation : 'none')};
@@ -79,6 +80,7 @@ const NoteText = styled.div`
   line-height: 12px;
   font-weight: 600;
   text-transform: uppercase;
+  font-family: system-ui, sans-serif;
 
   @media (max-width: 1366px) {
     font-size: 10px;

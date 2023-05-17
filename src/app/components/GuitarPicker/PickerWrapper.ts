@@ -9,8 +9,13 @@ export const PickerWrapper = styled.div`
   border-radius: 28px;
   display: flex;
   align-items: center;
-  background: ${(props) => props.theme.palette.black1};
+  background: ${(props) => props.theme.colors.card};
   padding: 0px ${PADDING}px;
   width: fit-content;
   overflow: hidden;
+
+  @media (max-height: 1024px) {
+    height: 48px;
+    border-radius: 24px;
+  }
 `;

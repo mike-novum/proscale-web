@@ -1,0 +1,10 @@
+import styled from 'styled-components';
+
+export const FretCell = styled.div`
+  width: 100%;
+  height: 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;

@@ -15,12 +15,19 @@ const PickerWrapper = styled.div`
   -webkit-box-pack: center;
   justify-content: center;
   gap: 8px;
-  margin-top: 24px;
   max-width: 1024px;
-  background: rgb(48 53 73);
+  background: ${(props) => props.theme.colors.card};
   box-sizing: border-box;
-  padding: 16px;
   border-radius: 20px;
+  padding: 16px;
+  @media (max-height: 1024px) {
+    padding: 12px;
+    border-radius: 16px;
+  }
+  @media (max-height: 768px) {
+    padding: 8px;
+    border-radius: 12px;
+  }
 `;
 
 export const ScalePicker: FC<ScalePickerProps> = ({ onChange, active }) => {
