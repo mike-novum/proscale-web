@@ -26,6 +26,14 @@ const PlaceholderImage = styled.img`
   width: 75vw;
   height: 75vw;
 `;
+const Copyright = styled.div`
+  color: ${(props) => props.theme.colors.grayText};
+  position: absolute;
+  bottom: 8px;
+  text-align: center;
+  width: 100%;
+  font-size: 10px;
+`;
 
 const Header = styled.h1`
   color: ${(props) => props.theme.colors.primary};
@@ -46,6 +54,7 @@ export const MobileGuitarPage: FC = () => {
       <Text>
         Разработчик решил выкатить мобильную версию позже и пошел пить кофе...
       </Text>
+      <Copyright>&copy; test</Copyright>
     </Content>
   );
 };
