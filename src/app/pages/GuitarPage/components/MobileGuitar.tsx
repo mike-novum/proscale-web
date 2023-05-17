@@ -6,12 +6,13 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex: 1;
   align-items: center;
-  height: 100%;
   width: 100%;
   padding: 32px;
   box-sizing: border-box;
   font-family: system-ui, sans-serif;
+  overflow: hidden;
 `;
 
 // const ScrollView = styled.div`

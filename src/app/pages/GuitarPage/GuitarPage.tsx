@@ -8,11 +8,12 @@ import { DesktopGuitarPage } from './components/DesktopGuitar';
 const Page = styled.div`
   width: 100%;
   height: 100%;
-  overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
 `;
 
 export const GuitarPage: FC = () => {
