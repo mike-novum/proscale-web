@@ -11,4 +11,9 @@ export const PickerShape = styled.div`
   border-radius: 22px;
   transition: 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
   left: 0;
+
+  @media (max-height: 1024px) {
+    height: 36px;
+    border-radius: 18px;
+  }
 `;

@@ -14,7 +14,6 @@ const PickerWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 24px 0px;
 `;
 
 export const TuningPicker: FC<TuningPickerProps> = ({

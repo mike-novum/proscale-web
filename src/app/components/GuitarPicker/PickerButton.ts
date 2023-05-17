@@ -18,4 +18,9 @@ export const PickerButton = styled.button<PickerButtonProps>`
   :active {
     opacity: 0.7;
   }
+
+  @media (max-height: 1024px) {
+    height: 48px;
+    border-radius: 24px;
+  }
 `;

@@ -1,1 +1,1 @@
-export { GuitarPage } from './GuitarPage';
+export { GuitarPage } from './GuitarPage/GuitarPage';

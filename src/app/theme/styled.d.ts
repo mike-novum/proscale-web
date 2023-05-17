@@ -19,6 +19,7 @@ declare module 'styled-components' {
       primary2: string;
       primary3: string;
       primary4: string;
+      primary5: string;
     };
     gradients: {
       main: string;

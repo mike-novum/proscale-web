@@ -1,7 +1,7 @@
 import { FC, memo } from 'react';
 import styled, { keyframes } from 'styled-components';
 
-import type { NoteKey } from '../../utils/tunes';
+import type { NoteKey } from '../../../../utils/tunes';
 
 export interface NoteProps {
   tonica: NoteKey;

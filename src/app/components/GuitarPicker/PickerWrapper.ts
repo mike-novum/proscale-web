@@ -13,4 +13,9 @@ export const PickerWrapper = styled.div`
   padding: 0px ${PADDING}px;
   width: fit-content;
   overflow: hidden;
+
+  @media (max-height: 1024px) {
+    height: 48px;
+    border-radius: 24px;
+  }
 `;
