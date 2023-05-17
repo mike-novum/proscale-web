@@ -31,7 +31,7 @@ const NoteWrapper = styled.div<NoteWrapperProps>`
   background: ${(props) =>
     props.isTonica === true
       ? props.theme.gradients.main
-      : props.theme.palette.primary3};
+      : props.theme.colors.primary};
   display: flex;
   align-items: center;
   justify-content: center;

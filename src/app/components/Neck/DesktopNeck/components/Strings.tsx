@@ -21,7 +21,7 @@ const StringsWrapper = styled.div`
 const String = styled.div`
   height: 2px;
   width: 100%;
-  background: ${(props) => props.theme.palette.primary2};
+  background: ${(props) => props.theme.colors.primary};
 `;
 
 export const Strings: FC<StringsProps> = ({ count }) => {

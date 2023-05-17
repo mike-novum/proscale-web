@@ -15,7 +15,7 @@ const PickerWrapper = styled.div`
   flex-wrap: wrap;
   gap: 8px;
   max-width: 1024px;
-  background: rgb(48 53 73);
+  background: ${(props) => props.theme.colors.card};
   box-sizing: border-box;
   padding: 16px;
   border-radius: 20px;

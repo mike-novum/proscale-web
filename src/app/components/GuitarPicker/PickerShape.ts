@@ -4,7 +4,7 @@ import { PADDING } from './constants';
 
 export const PickerShape = styled.div`
   position: absolute;
-  background-color: ${(props) => props.theme.palette.black3};
+  background-color: ${(props) => props.theme.colors.notification};
   top: ${PADDING}px;
   width: 100px;
   height: 44px;

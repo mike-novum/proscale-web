@@ -24,14 +24,14 @@ const ControlButtonWrapper = styled.button<ControlButtonWrapperProps>`
   font-size: 14px;
   cursor: pointer;
   background: ${(props) =>
-    props.active ? props.theme.gradients.main : props.theme.palette.primary5};
-  transition: 0.2s;
+    props.active
+      ? props.theme.gradients.main
+      : props.theme.colors.notification};
+  transition: 0.3s;
 
   &:hover {
-    background-color: ${(props) =>
-      props.active
-        ? props.theme.palette.primary
-        : props.theme.palette.primary4};
+    background-color: ${(props) => props.theme.colors.notification};
+    transform: scale(0.95);
   }
   &:active {
     opacity: 0.7;

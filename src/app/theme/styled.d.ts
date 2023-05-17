@@ -24,5 +24,15 @@ declare module 'styled-components' {
     gradients: {
       main: string;
     };
+    colors: {
+      zero: string;
+      background: string;
+      card: string;
+      notification: string;
+      text: string;
+      invertedText: string;
+      grayText: string;
+      primary: string;
+    };
   }
 }

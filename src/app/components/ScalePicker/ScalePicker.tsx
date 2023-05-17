@@ -16,7 +16,7 @@ const PickerWrapper = styled.div`
   justify-content: center;
   gap: 8px;
   max-width: 1024px;
-  background: rgb(48 53 73);
+  background: ${(props) => props.theme.colors.card};
   box-sizing: border-box;
   border-radius: 20px;
   padding: 16px;

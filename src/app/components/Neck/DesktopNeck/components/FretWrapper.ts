@@ -10,9 +10,7 @@ export const FretWrapper = styled.div<FretWrapperProps>`
   position: relative;
   box-sizing: border-box;
   background: ${(props) =>
-    props.isZeroFret
-      ? props.theme.palette.black3
-      : props.theme.palette.primary5};
+    props.isZeroFret ? props.theme.colors.card : props.theme.colors.card};
 
   border-right: ${(props) => {
     return props.isZeroFret ? '8px solid white' : 'none';
