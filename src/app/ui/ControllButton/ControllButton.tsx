@@ -1,10 +1,15 @@
 import type { FC, PropsWithChildren } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 interface ControlButtonWrapperProps {
   active?: boolean;
   formType?: 'default' | 'circle';
 }
+
+const fadeInAnimation = keyframes`
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+`;
 const ControlButtonWrapper = styled.button<ControlButtonWrapperProps>`
   display: ${(props) => (props.formType === 'circle' ? 'flex' : undefined)};
   align-items: ${(props) =>
@@ -23,10 +28,13 @@ const ControlButtonWrapper = styled.button<ControlButtonWrapperProps>`
   text-transform: uppercase;
   font-size: 14px;
   cursor: pointer;
+  user-select: none;
   background: ${(props) =>
     props.active
       ? props.theme.gradients.main
       : props.theme.colors.notification};
+
+  animation: ${fadeInAnimation} 0.6s;
   transition: 0.3s;
 
   &:hover {
@@ -65,7 +73,9 @@ export const ControlButton: FC<ControlButtonProps> = ({
 }) => {
   return (
     <ControlButtonWrapper active={active} onClick={onClick} formType={formType}>
-      <div>{children}</div>
+      <div style={{ userSelect: 'none', fontFamily: 'system-ui, sans-serif' }}>
+        {children}
+      </div>
     </ControlButtonWrapper>
   );
 };

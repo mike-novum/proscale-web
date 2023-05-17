@@ -16,11 +16,12 @@ const Page = styled.div`
 `;
 
 export const GuitarPage: FC = () => {
-  const { isMobile } = useWindowSize();
+  const { isMobile, isDesktop } = useWindowSize();
 
   return (
     <Page>
-      {isMobile === true ? <MobileGuitarPage /> : <DesktopGuitarPage />}
+      {isMobile === true ? <MobileGuitarPage /> : null}
+      {isDesktop === true ? <DesktopGuitarPage /> : null}
     </Page>
   );
 };

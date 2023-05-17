@@ -34,6 +34,7 @@ export const FretNumber: FC<FretNumberProps> = ({ value, size }) => {
         style={{
           fontSize: isBigFret(value) ? 14 : 12,
           color: isBigFret(value) ? '#d1d1d1' : '#6e6e6e',
+          fontFamily: 'system-ui, sans-serif',
         }}
       >
         {value}

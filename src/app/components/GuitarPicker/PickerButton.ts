@@ -15,7 +15,8 @@ export const PickerButton = styled.button<PickerButtonProps>`
   font-size: 14px;
   transition: 0.2s;
   color: ${(props) => (props.active ? props.theme.colors.text : '#a5a5a5')};
-
+  user-select: none;
+  font-family: system-ui, sans-serif;
   :hover {
     color: ${(props) => (props.active ? 'inherit' : props.theme.colors.text)};
   }

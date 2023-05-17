@@ -36,6 +36,7 @@ const NoteWrapper = styled.div<NoteWrapperProps>`
   align-items: center;
   justify-content: center;
   position: relative;
+  user-select: none;
 
   transition: 200ms;
   animation-name: ${(props) => (props.isActive ? scaleAnimation : 'none')};
@@ -79,6 +80,7 @@ const NoteText = styled.div`
   line-height: 12px;
   font-weight: 600;
   text-transform: uppercase;
+  font-family: system-ui, sans-serif;
 
   @media (max-width: 1366px) {
     font-size: 10px;

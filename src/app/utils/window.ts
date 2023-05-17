@@ -10,8 +10,8 @@ type WindowState = {
 const mobileWidth = 1024;
 
 export const useWindowSize = (): WindowState => {
-  const [width, setWidth] = useState<number | undefined>(undefined);
-  const [height, setHeight] = useState<number | undefined>(undefined);
+  const [width, setWidth] = useState<number | undefined>(window.innerWidth);
+  const [height, setHeight] = useState<number | undefined>(window.innerHeight);
 
   // Resizing of window
   useEffect(() => {
