@@ -9,7 +9,6 @@ const Content = styled.div`
   flex: 1;
   align-items: center;
   width: 100%;
-  padding: 32px;
   box-sizing: border-box;
   font-family: system-ui, sans-serif;
   overflow: hidden;
