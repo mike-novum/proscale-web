@@ -73,7 +73,13 @@ export const ControlButton: FC<ControlButtonProps> = ({
 }) => {
   return (
     <ControlButtonWrapper active={active} onClick={onClick} formType={formType}>
-      <div style={{ userSelect: 'none', fontFamily: 'system-ui, sans-serif' }}>
+      <div
+        style={{
+          userSelect: 'none',
+          fontFamily: 'system-ui, sans-serif',
+          whiteSpace: 'nowrap',
+        }}
+      >
         {children}
       </div>
     </ControlButtonWrapper>

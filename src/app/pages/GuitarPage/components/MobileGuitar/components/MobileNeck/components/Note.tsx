@@ -1,7 +1,7 @@
 import { FC, memo, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import type { NoteKey } from '../../../../utils/tunes';
+import type { NoteKey } from '../../../../../../../utils/tunes';
 
 export interface NoteProps {
   tonica: NoteKey;
@@ -15,52 +15,24 @@ type NoteWrapperProps = {
 };
 
 const SIZE = 32;
-const SIZE_M = 28;
-const SIZE_S = 22;
 
 const NoteWrapper = styled.div<NoteWrapperProps>`
-  background: ${(props) =>
-    props.isTonica === true
-      ? props.theme.gradients.main
-      : props.theme.colors.primary};
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   user-select: none;
-
   z-index: 1;
   width: ${SIZE}px;
   height: ${SIZE}px;
   border-radius: ${SIZE}px;
-
   transition: 300ms;
   transform: scale(${(props) => (props.isActive ? '1' : '0')});
-
-  @media (max-width: 1366px) {
-    transition: 200ms;
-    width: ${SIZE_M}px;
-    height: ${SIZE_M}px;
-    border-radius: ${SIZE_M}px;
-  }
-  @media (max-width: 1024px) {
-    transition: 200ms;
-    width: ${SIZE}px;
-    height: ${SIZE}px;
-    border-radius: ${SIZE}px;
-  }
-  @media (max-width: 768px) {
-    transition: 200ms;
-    width: ${SIZE_M}px;
-    height: ${SIZE_M}px;
-    border-radius: ${SIZE_M}px;
-  }
-  @media (max-width: 375px) {
-    transition: 200ms;
-    width: ${SIZE_S}px;
-    height: ${SIZE_S}px;
-    border-radius: ${SIZE_S}px;
-  }
+  opacity: ${(props) => (props.isActive ? '1' : '0')};
+  background: ${(props) =>
+    props.isTonica === true
+      ? props.theme.gradients.main
+      : props.theme.colors.primary};
 `;
 
 const NoteText = styled.div`
@@ -70,10 +42,6 @@ const NoteText = styled.div`
   font-weight: 600;
   text-transform: uppercase;
   font-family: system-ui, sans-serif;
-
-  @media (max-width: 1366px) {
-    font-size: 10px;
-  }
 `;
 
 const _Note: FC<NoteProps> = ({ note, tonica, isActive }) => {
