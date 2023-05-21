@@ -6,6 +6,6 @@ export const NeckWrapper = styled.div`
   flex-direction: column;
   flex: 1;
   align-items: center;
-  padding: 32px 16px;
+  padding: 32px 32px;
   box-sizing: border-box;
 `;

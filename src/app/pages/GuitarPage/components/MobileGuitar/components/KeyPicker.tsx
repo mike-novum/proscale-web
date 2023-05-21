@@ -1,8 +1,8 @@
-import type { FC } from 'react';
+import { FC, useRef } from 'react';
 
 import { NOTES, NoteKey } from '../../../../../utils/tunes';
-import { ControlButton } from '../../../../../ui';
 import { PickerWrapper } from './PickerWrapper';
+import { ControlButton } from './ControlButton';
 
 interface KeyPickerProps {
   active: NoteKey;
@@ -10,15 +10,24 @@ interface KeyPickerProps {
 }
 
 export const KeyPicker: FC<KeyPickerProps> = ({ onChange, active }) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
   return (
-    <PickerWrapper>
+    <PickerWrapper ref={scrollRef}>
       {NOTES.map((item) => {
         return (
           <ControlButton
             formType="circle"
             active={active === item}
             key={item}
-            onClick={() => {
+            onClick={(e) => {
+              scrollRef.current?.scrollTo({
+                top: 0,
+                // TODO: fix types
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                left: e.target.offsetLeft - 40,
+                behavior: 'smooth',
+              });
               onChange(item);
             }}
           >

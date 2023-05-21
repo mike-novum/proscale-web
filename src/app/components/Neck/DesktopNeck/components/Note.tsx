@@ -7,11 +7,13 @@ export interface NoteProps {
   tonica: NoteKey;
   isActive: boolean;
   note: NoteKey;
+  isFirstFret: boolean;
 }
 
 type NoteWrapperProps = {
   isActive: boolean;
   isTonica: boolean;
+  isFirstFret: boolean;
 };
 
 const SIZE = 32;
@@ -19,10 +21,6 @@ const SIZE_M = 28;
 const SIZE_S = 22;
 
 const NoteWrapper = styled.div<NoteWrapperProps>`
-  background: ${(props) =>
-    props.isTonica === true
-      ? props.theme.gradients.main
-      : props.theme.colors.primary};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,9 +31,28 @@ const NoteWrapper = styled.div<NoteWrapperProps>`
   width: ${SIZE}px;
   height: ${SIZE}px;
   border-radius: ${SIZE}px;
+  transition: 400ms;
+  transform: scale(
+    ${(props) => (props.isActive || props.isFirstFret ? '1' : '0')}
+  );
+  opacity: ${(props) => (props.isActive || props.isFirstFret ? '1' : '0')};
+  border: ${(props) =>
+    props.isFirstFret ? `1px solid ${props.theme.colors.primary}` : 'none'};
+  background: ${(props) => {
+    if (props.isFirstFret === true) {
+      if (props.isTonica === true) {
+        return props.theme.gradients.main;
+      }
+      if (props.isActive === true) {
+        return props.theme.colors.primary;
+      }
+      return props.theme.colors.notification;
+    }
 
-  transition: 300ms;
-  transform: scale(${(props) => (props.isActive ? '1' : '0')});
+    return props.isTonica === true
+      ? props.theme.gradients.main
+      : props.theme.colors.primary;
+  }};
 
   @media (max-width: 1366px) {
     transition: 200ms;
@@ -76,7 +93,7 @@ const NoteText = styled.div`
   }
 `;
 
-const _Note: FC<NoteProps> = ({ note, tonica, isActive }) => {
+const _Note: FC<NoteProps> = ({ note, tonica, isActive, isFirstFret }) => {
   const [show, setShow] = useState<boolean>(false);
   useEffect(() => {
     if (isActive !== show) {
@@ -85,7 +102,11 @@ const _Note: FC<NoteProps> = ({ note, tonica, isActive }) => {
   }, [isActive, show]);
 
   return (
-    <NoteWrapper isActive={show} isTonica={tonica === note}>
+    <NoteWrapper
+      isFirstFret={isFirstFret}
+      isActive={show}
+      isTonica={tonica === note}
+    >
       <NoteText>{note}</NoteText>
     </NoteWrapper>
   );

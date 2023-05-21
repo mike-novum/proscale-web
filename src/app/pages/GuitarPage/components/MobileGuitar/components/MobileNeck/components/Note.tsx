@@ -4,17 +4,21 @@ import styled from 'styled-components';
 import type { NoteKey } from '../../../../../../../utils/tunes';
 
 export interface NoteProps {
+  isFirstFret: boolean;
   tonica: NoteKey;
   isActive: boolean;
   note: NoteKey;
 }
 
 type NoteWrapperProps = {
+  isFirstFret: boolean;
   isActive: boolean;
   isTonica: boolean;
 };
 
 const SIZE = 32;
+const SIZE_M = 30;
+const SIZE_S = 28;
 
 const NoteWrapper = styled.div<NoteWrapperProps>`
   display: flex;
@@ -26,13 +30,41 @@ const NoteWrapper = styled.div<NoteWrapperProps>`
   width: ${SIZE}px;
   height: ${SIZE}px;
   border-radius: ${SIZE}px;
-  transition: 300ms;
-  transform: scale(${(props) => (props.isActive ? '1' : '0')});
-  opacity: ${(props) => (props.isActive ? '1' : '0')};
-  background: ${(props) =>
-    props.isTonica === true
+  transition: 400ms;
+  transform: scale(
+    ${(props) => (props.isActive || props.isFirstFret ? '1' : '0')}
+  );
+  opacity: ${(props) => (props.isActive || props.isFirstFret ? '1' : '0')};
+
+  border: ${(props) =>
+    props.isFirstFret ? `1px solid ${props.theme.colors.primary}` : 'none'};
+
+  background: ${(props) => {
+    if (props.isFirstFret === true) {
+      if (props.isTonica === true) {
+        return props.theme.gradients.main;
+      }
+      if (props.isActive === true) {
+        return props.theme.colors.primary;
+      }
+      return props.theme.colors.notification;
+    }
+
+    return props.isTonica === true
       ? props.theme.gradients.main
-      : props.theme.colors.primary};
+      : props.theme.colors.primary;
+  }};
+
+  @media (max-width: 414px) {
+    width: ${SIZE_M}px;
+    height: ${SIZE_M}px;
+    border-radius: ${SIZE_M}px;
+  }
+  @media (max-width: 368px) {
+    width: ${SIZE_S}px;
+    height: ${SIZE_S}px;
+    border-radius: ${SIZE_S}px;
+  }
 `;
 
 const NoteText = styled.div`
@@ -44,7 +76,7 @@ const NoteText = styled.div`
   font-family: system-ui, sans-serif;
 `;
 
-const _Note: FC<NoteProps> = ({ note, tonica, isActive }) => {
+const _Note: FC<NoteProps> = ({ note, tonica, isActive, isFirstFret }) => {
   const [show, setShow] = useState<boolean>(false);
   useEffect(() => {
     if (isActive !== show) {
@@ -53,7 +85,11 @@ const _Note: FC<NoteProps> = ({ note, tonica, isActive }) => {
   }, [isActive, show]);
 
   return (
-    <NoteWrapper isActive={show} isTonica={tonica === note}>
+    <NoteWrapper
+      isFirstFret={isFirstFret}
+      isActive={show}
+      isTonica={tonica === note}
+    >
       <NoteText>{note}</NoteText>
     </NoteWrapper>
   );

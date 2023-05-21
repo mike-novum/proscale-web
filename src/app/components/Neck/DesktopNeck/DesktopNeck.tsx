@@ -107,6 +107,7 @@ export const DesktopNeck: FC<NeckProps> = ({ noteKey, tuning, scale }) => {
               {_fret.map((note, noteIndex) => (
                 <FretCell key={note + noteIndex}>
                   <Note
+                    isFirstFret={fretIndex === 0}
                     isActive={
                       scaleNotes.find((nt) => nt === note) !== undefined
                     }

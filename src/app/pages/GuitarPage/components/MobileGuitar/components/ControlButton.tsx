@@ -1,15 +1,12 @@
-import type { FC, PropsWithChildren } from 'react';
-import styled, { keyframes } from 'styled-components';
+import type { FC, MouseEventHandler, PropsWithChildren } from 'react';
+import styled from 'styled-components';
 
 interface ControlButtonWrapperProps {
   active?: boolean;
   formType?: 'default' | 'circle';
+  size?: 'big' | 'default';
 }
 
-const fadeInAnimation = keyframes`
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-`;
 const ControlButtonWrapper = styled.button<ControlButtonWrapperProps>`
   display: ${(props) => (props.formType === 'circle' ? 'flex' : undefined)};
   align-items: ${(props) =>
@@ -17,25 +14,26 @@ const ControlButtonWrapper = styled.button<ControlButtonWrapperProps>`
   justify-content: ${(props) =>
     props.formType === 'circle' ? 'center' : undefined};
 
-  font-weight: 600;
   color: ${(props) => props.theme.palette.text};
   border: none;
-  width: ${(props) => (props.formType === 'circle' ? '44px' : 'auto')};
-  height: 44px;
+
   border-radius: 22px;
-  padding: 0px 16px;
+  padding: ${(props) => (props.formType === 'circle' ? 'unset' : ' 0px 16px')};
   vertical-align: middle;
   text-transform: uppercase;
   font-size: 14px;
   cursor: pointer;
   user-select: none;
+  font-family: system-ui, sans-serif;
   background: ${(props) =>
     props.active
       ? props.theme.gradients.main
       : props.theme.colors.notification};
 
-  animation: ${fadeInAnimation} 0.6s;
+  font-weight: 600;
+  min-width: ${(props) => (props.formType === 'circle' ? '44px' : 'auto')};
   transition: 0.3s;
+  height: ${(props) => (props.size === 'big' ? '72px' : '44px')};
 
   &:hover {
     background-color: ${(props) => `${props.theme.colors.notification}aa`};
@@ -44,28 +42,20 @@ const ControlButtonWrapper = styled.button<ControlButtonWrapperProps>`
     opacity: 0.7;
   }
 
-  @media (max-height: 1024px) {
-    width: ${(props) => (props.formType === 'circle' ? '38px' : 'auto')};
-    height: 38px;
-    border-radius: 19px;
-    font-size: 14px;
-  }
-  @media (max-height: 768px) {
-    width: ${(props) => (props.formType === 'circle' ? '32px' : 'auto')};
-    height: 32px;
-    border-radius: 16px;
-    font-size: 12px;
-  }
-
-  @media (max-width: 1024px) {
+  @media (max-width: 375px) {
     animation: none;
+
+    height: ${(props) => (props.size === 'big' ? '64px' : '36px')};
+    border-radius: 18px;
+    min-width: ${(props) => (props.formType === 'circle' ? '36px' : 'auto')};
   }
 `;
 
 interface ControlButtonProps extends PropsWithChildren {
   active?: boolean;
   formType?: 'default' | 'circle';
-  onClick?: () => void;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  size?: 'big' | 'default';
 }
 
 export const ControlButton: FC<ControlButtonProps> = ({
@@ -73,9 +63,15 @@ export const ControlButton: FC<ControlButtonProps> = ({
   active,
   formType,
   onClick,
+  size = 'default',
 }) => {
   return (
-    <ControlButtonWrapper active={active} onClick={onClick} formType={formType}>
+    <ControlButtonWrapper
+      size={size}
+      active={active}
+      onClick={onClick}
+      formType={formType}
+    >
       <div
         style={{
           userSelect: 'none',

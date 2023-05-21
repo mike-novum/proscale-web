@@ -27,16 +27,41 @@ const Scroll = styled.div`
   overflow: hidden;
   box-sizing: border-box;
   overflow-y: auto;
+
+  ::-webkit-scrollbar {
+    color: #95ff00;
+    width: 4px;
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #ff9500;
+  }
+  ::-webkit-scrollbar-track-piece {
+    background-color: ${(props) => props.theme.colors.card};
+  }
+  ::-webkit-scrollbar-thumb {
+    width: 2px;
+    border-radius: 2px;
+    background-color: ${(props) => props.theme.colors.notification};
+  }
 `;
 
-const ControlPanelWrapper = styled.div`
+const ControlPanelWrapper = styled.div<{ expanded: boolean }>`
   border-radius: 16px;
   background-color: ${(props) => props.theme.colors.card};
-  height: 100px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  gap: 8px;
+  padding: 16px 0px;
+  transition: 300ms;
+  height: ${(props) => (props.expanded ? '184px' : '156px')};
+
+  @media (max-width: 375px) {
+    height: ${(props) => (props.expanded ? '156px' : '128px')};
+  }
 `;
 
 export const MobileGuitar: FC = () => {
@@ -63,7 +88,7 @@ export const MobileGuitar: FC = () => {
       <Scroll>
         <MobileNeck noteKey={key} tuning={tuning} scale={scale} />
       </Scroll>
-      <ControlPanelWrapper>
+      <ControlPanelWrapper expanded={tab === 3}>
         {tab === 0 ? <ScalePicker active={scale} onChange={setScale} /> : null}
         {tab === 1 ? <KeyPicker active={key} onChange={setKey} /> : null}
         {tab === 2 ? (
