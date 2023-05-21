@@ -19,11 +19,10 @@ const FretNumberWrapper = styled.div<FretNumberWrapperProps>`
   justify-content: center;
   transition: 200ms;
 
-  width: ${(props) => props.size}px;
-  height: 20px;
+  height: ${(props) => props.size}px;
+  width: 20px;
   font-size: 12px;
   font-weight: bold;
-  margin-top: 12px;
   color: #6e6e6e;
 `;
 

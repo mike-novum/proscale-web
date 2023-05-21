@@ -10,6 +10,8 @@ import {
 } from '../../../../../../utils/tunes';
 import {
   FretCell,
+  FretNumber,
+  FretNumbersWrapper,
   FretWrapper,
   FretsWrapper,
   NeckWrapper,
@@ -62,6 +64,19 @@ export const MobileNeck: FC<NeckProps> = ({ noteKey, tuning, scale }) => {
         })}
         <Strings count={tuning.notes.length} />
       </FretsWrapper>
+      <FretNumbersWrapper>
+        {neckNotes.map((fret, fretIndex) => {
+          const width = calculateFretSize(fretIndex, 72);
+
+          return (
+            <FretNumber
+              key={fret.join('') + fretIndex}
+              value={fretIndex}
+              size={fretIndex === 0 ? 80 : width}
+            />
+          );
+        })}
+      </FretNumbersWrapper>
     </NeckWrapper>
   );
 };
