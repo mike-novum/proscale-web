@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 const keyfr = keyframes`
 	0% {
 		transform: scale(0);
-    transform: translateX(50px);
+    transform: translateX(25px);
     opacity: 0;
 	}
 

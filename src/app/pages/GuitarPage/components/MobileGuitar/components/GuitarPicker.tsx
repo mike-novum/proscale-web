@@ -18,6 +18,16 @@ export const GuitarPicker: FC<GuitarPickerProps> = ({ onChange, active }) => {
     setBig(true);
   }, []);
 
+  const selectedItemRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (selectedItemRef.current) {
+      scrollRef.current?.scrollTo({
+        left: selectedItemRef.current.offsetLeft - 40,
+        behavior: 'smooth',
+      });
+    }
+  }, [active]);
+
   return (
     <PickerWrapper ref={scrollRef}>
       {AllGuitars.map((guitar) => {
@@ -25,15 +35,9 @@ export const GuitarPicker: FC<GuitarPickerProps> = ({ onChange, active }) => {
           <ControlButton
             size={big ? 'big' : 'default'}
             key={guitar.key}
+            ref={guitar.key === active.key ? selectedItemRef : null}
             active={guitar.key === active.key}
-            onClick={(e) => {
-              scrollRef.current?.scrollTo({
-                // TODO: fix types
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                left: e.target.offsetLeft - 40,
-                behavior: 'smooth',
-              });
+            onClick={() => {
               onChange(guitar);
             }}
           >

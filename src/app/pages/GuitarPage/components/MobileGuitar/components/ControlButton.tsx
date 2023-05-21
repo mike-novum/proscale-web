@@ -1,4 +1,4 @@
-import type { FC, MouseEventHandler, PropsWithChildren } from 'react';
+import { MouseEventHandler, PropsWithChildren, forwardRef } from 'react';
 import styled from 'styled-components';
 
 interface ControlButtonWrapperProps {
@@ -58,29 +58,27 @@ interface ControlButtonProps extends PropsWithChildren {
   size?: 'big' | 'default';
 }
 
-export const ControlButton: FC<ControlButtonProps> = ({
-  children,
-  active,
-  formType,
-  onClick,
-  size = 'default',
-}) => {
-  return (
-    <ControlButtonWrapper
-      size={size}
-      active={active}
-      onClick={onClick}
-      formType={formType}
-    >
-      <div
-        style={{
-          userSelect: 'none',
-          fontFamily: 'system-ui, sans-serif',
-          whiteSpace: 'nowrap',
-        }}
+// eslint-disable-next-line react/display-name
+export const ControlButton = forwardRef<HTMLButtonElement, ControlButtonProps>(
+  ({ children, active, formType, onClick, size = 'default' }, ref) => {
+    return (
+      <ControlButtonWrapper
+        ref={ref}
+        size={size}
+        active={active}
+        onClick={onClick}
+        formType={formType}
       >
-        {children}
-      </div>
-    </ControlButtonWrapper>
-  );
-};
+        <div
+          style={{
+            userSelect: 'none',
+            fontFamily: 'system-ui, sans-serif',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {children}
+        </div>
+      </ControlButtonWrapper>
+    );
+  }
+);

@@ -1,4 +1,4 @@
-import { FC, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 
 import { PickerWrapper } from './PickerWrapper';
 import type { TuningItem } from '../../../../../utils/tunes';
@@ -16,21 +16,25 @@ export const TuningPicker: FC<TuningPickerProps> = ({
   tunings,
 }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const selectedItemRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (selectedItemRef.current) {
+      scrollRef.current?.scrollTo({
+        left: selectedItemRef.current.offsetLeft - 40,
+        behavior: 'smooth',
+      });
+    }
+  }, [active]);
+
   return (
     <PickerWrapper ref={scrollRef}>
       {tunings.map((item) => {
         return (
           <ControlButton
             active={active.name === item.name}
+            ref={active.name === item.name ? selectedItemRef : null}
             key={item.name}
-            onClick={(e) => {
-              scrollRef.current?.scrollTo({
-                // TODO: fix types
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                left: e.target.offsetLeft - 40,
-                behavior: 'smooth',
-              });
+            onClick={() => {
               onChange(item);
             }}
           >

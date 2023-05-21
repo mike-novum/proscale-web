@@ -1,4 +1,4 @@
-import { FC, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 
 import { NOTES, NoteKey } from '../../../../../utils/tunes';
 import { PickerWrapper } from './PickerWrapper';
@@ -11,6 +11,16 @@ interface KeyPickerProps {
 
 export const KeyPicker: FC<KeyPickerProps> = ({ onChange, active }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const selectedItemRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (selectedItemRef.current) {
+      scrollRef.current?.scrollTo({
+        left: selectedItemRef.current.offsetLeft - 40,
+        behavior: 'smooth',
+      });
+    }
+  }, [active]);
+
   return (
     <PickerWrapper ref={scrollRef}>
       {NOTES.map((item) => {
@@ -19,14 +29,8 @@ export const KeyPicker: FC<KeyPickerProps> = ({ onChange, active }) => {
             formType="circle"
             active={active === item}
             key={item}
-            onClick={(e) => {
-              scrollRef.current?.scrollTo({
-                // TODO: fix types
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                left: e.target.offsetLeft - 40,
-                behavior: 'smooth',
-              });
+            ref={active === item ? selectedItemRef : null}
+            onClick={() => {
               onChange(item);
             }}
           >
