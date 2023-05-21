@@ -28,7 +28,6 @@ export const GuitarPicker: FC<GuitarPickerProps> = ({ onChange, active }) => {
             active={guitar.key === active.key}
             onClick={(e) => {
               scrollRef.current?.scrollTo({
-                top: 0,
                 // TODO: fix types
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore

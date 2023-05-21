@@ -25,7 +25,6 @@ export const TuningPicker: FC<TuningPickerProps> = ({
             key={item.name}
             onClick={(e) => {
               scrollRef.current?.scrollTo({
-                top: 0,
                 // TODO: fix types
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
