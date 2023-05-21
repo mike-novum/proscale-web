@@ -1,0 +1,1 @@
+export { DesktopGuitar } from './DesktopGuitar';

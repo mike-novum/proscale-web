@@ -38,8 +38,7 @@ const ControlButtonWrapper = styled.button<ControlButtonWrapperProps>`
   transition: 0.3s;
 
   &:hover {
-    background-color: ${(props) => props.theme.colors.notification};
-    transform: scale(0.95);
+    background-color: ${(props) => `${props.theme.colors.notification}aa`};
   }
   &:active {
     opacity: 0.7;
@@ -57,6 +56,10 @@ const ControlButtonWrapper = styled.button<ControlButtonWrapperProps>`
     border-radius: 16px;
     font-size: 12px;
   }
+
+  @media (max-width: 1024px) {
+    animation: none;
+  }
 `;
 
 interface ControlButtonProps extends PropsWithChildren {
@@ -73,7 +76,13 @@ export const ControlButton: FC<ControlButtonProps> = ({
 }) => {
   return (
     <ControlButtonWrapper active={active} onClick={onClick} formType={formType}>
-      <div style={{ userSelect: 'none', fontFamily: 'system-ui, sans-serif' }}>
+      <div
+        style={{
+          userSelect: 'none',
+          fontFamily: 'system-ui, sans-serif',
+          whiteSpace: 'nowrap',
+        }}
+      >
         {children}
       </div>
     </ControlButtonWrapper>

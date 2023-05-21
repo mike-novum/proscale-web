@@ -84,11 +84,11 @@ export const Tunings7: TuningItem[] = [
     notes: standart_7,
   },
   {
-    name: 'Drop',
+    name: 'Drop A',
     notes: dropA_7,
   },
   {
-    name: 'Drop Ab',
+    name: 'Drop G#',
     notes: dropAb_7,
   },
   {
@@ -96,7 +96,7 @@ export const Tunings7: TuningItem[] = [
     notes: dropG_7,
   },
   {
-    name: 'Drop Gb',
+    name: 'Drop F#',
     notes: dropGb_7,
   },
 ];

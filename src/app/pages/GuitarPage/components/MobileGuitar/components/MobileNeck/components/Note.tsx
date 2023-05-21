@@ -1,24 +1,24 @@
 import { FC, memo, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import type { NoteKey } from '../../../../utils/tunes';
+import type { NoteKey } from '../../../../../../../utils/tunes';
 
 export interface NoteProps {
+  isFirstFret: boolean;
   tonica: NoteKey;
   isActive: boolean;
   note: NoteKey;
-  isFirstFret: boolean;
 }
 
 type NoteWrapperProps = {
+  isFirstFret: boolean;
   isActive: boolean;
   isTonica: boolean;
-  isFirstFret: boolean;
 };
 
 const SIZE = 32;
-const SIZE_M = 28;
-const SIZE_S = 22;
+const SIZE_M = 30;
+const SIZE_S = 28;
 
 const NoteWrapper = styled.div<NoteWrapperProps>`
   display: flex;
@@ -26,7 +26,6 @@ const NoteWrapper = styled.div<NoteWrapperProps>`
   justify-content: center;
   position: relative;
   user-select: none;
-
   z-index: 1;
   width: ${SIZE}px;
   height: ${SIZE}px;
@@ -36,8 +35,10 @@ const NoteWrapper = styled.div<NoteWrapperProps>`
     ${(props) => (props.isActive || props.isFirstFret ? '1' : '0')}
   );
   opacity: ${(props) => (props.isActive || props.isFirstFret ? '1' : '0')};
+
   border: ${(props) =>
     props.isFirstFret ? `1px solid ${props.theme.colors.primary}` : 'none'};
+
   background: ${(props) => {
     if (props.isFirstFret === true) {
       if (props.isTonica === true) {
@@ -54,26 +55,12 @@ const NoteWrapper = styled.div<NoteWrapperProps>`
       : props.theme.colors.primary;
   }};
 
-  @media (max-width: 1366px) {
-    transition: 200ms;
+  @media (max-width: 414px) {
     width: ${SIZE_M}px;
     height: ${SIZE_M}px;
     border-radius: ${SIZE_M}px;
   }
-  @media (max-width: 1024px) {
-    transition: 200ms;
-    width: ${SIZE}px;
-    height: ${SIZE}px;
-    border-radius: ${SIZE}px;
-  }
-  @media (max-width: 768px) {
-    transition: 200ms;
-    width: ${SIZE_M}px;
-    height: ${SIZE_M}px;
-    border-radius: ${SIZE_M}px;
-  }
-  @media (max-width: 375px) {
-    transition: 200ms;
+  @media (max-width: 368px) {
     width: ${SIZE_S}px;
     height: ${SIZE_S}px;
     border-radius: ${SIZE_S}px;
@@ -87,10 +74,6 @@ const NoteText = styled.div`
   font-weight: 600;
   text-transform: uppercase;
   font-family: system-ui, sans-serif;
-
-  @media (max-width: 1366px) {
-    font-size: 10px;
-  }
 `;
 
 const _Note: FC<NoteProps> = ({ note, tonica, isActive, isFirstFret }) => {

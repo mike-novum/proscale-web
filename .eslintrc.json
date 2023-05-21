@@ -107,6 +107,6 @@
       // "tsconfigRootDir": "./",
       // "extraFileExtensions":[".css", ".svg"]
     },
-    "ignorePatterns":["**/*.css", "**/*.svg"]
+    "ignorePatterns":["**/*.css", "**/*.svg","**/*.mjs"]
   }
   

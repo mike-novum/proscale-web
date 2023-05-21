@@ -2,8 +2,8 @@ import type { FC } from 'react';
 import styled from 'styled-components';
 
 import { useWindowSize } from '../../utils/window';
-import { MobileGuitarPage } from './components/MobileGuitar';
-import { DesktopGuitarPage } from './components/DesktopGuitar';
+import { MobileGuitar } from './components/MobileGuitar';
+import { DesktopGuitar } from './components/DesktopGuitar';
 
 const Page = styled.div`
   width: 100%;
@@ -21,8 +21,8 @@ export const GuitarPage: FC = () => {
 
   return (
     <Page>
-      {isMobile === true ? <MobileGuitarPage /> : null}
-      {isDesktop === true ? <DesktopGuitarPage /> : null}
+      {isMobile === true ? <MobileGuitar /> : null}
+      {isDesktop === true ? <DesktopGuitar /> : null}
     </Page>
   );
 };

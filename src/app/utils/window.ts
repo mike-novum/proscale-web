@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 
 type WindowState = {
-  width: number | undefined;
-  height: number | undefined;
+  width: number;
+  height: number;
   isMobile: boolean;
   isDesktop: boolean;
 };
@@ -10,8 +10,8 @@ type WindowState = {
 const mobileWidth = 1024;
 
 export const useWindowSize = (): WindowState => {
-  const [width, setWidth] = useState<number | undefined>(window.innerWidth);
-  const [height, setHeight] = useState<number | undefined>(window.innerHeight);
+  const [width, setWidth] = useState<number>(window.innerWidth);
+  const [height, setHeight] = useState<number>(window.innerHeight);
 
   // Resizing of window
   useEffect(() => {
