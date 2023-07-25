@@ -16,6 +16,7 @@ const PickerWrapper = styled.div`
   gap: 8px;
 `;
 
+// TODO: add memo
 export const TuningPicker: FC<TuningPickerProps> = ({
   onChange,
   active,

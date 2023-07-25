@@ -29,6 +29,7 @@ const PickerWrapper = styled.div`
   }
 `;
 
+// TODO: add memo
 export const KeyPicker: FC<KeyPickerProps> = ({ active, onChange }) => {
   return (
     <PickerWrapper>

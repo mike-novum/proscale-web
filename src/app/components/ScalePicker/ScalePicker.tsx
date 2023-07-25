@@ -33,6 +33,7 @@ const PickerWrapper = styled.div`
   }
 `;
 
+// TODO: add memo
 export const ScalePicker: FC<ScalePickerProps> = ({ onChange, active }) => {
   const scaleNames = useMemo(() => Scale.names(), []);
   return (

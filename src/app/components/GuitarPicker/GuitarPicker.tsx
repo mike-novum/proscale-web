@@ -11,6 +11,8 @@ interface GuitarPickerProps {
   onChange: (guitar: Guitar) => void;
 }
 
+// TODO: add memo
+
 export const GuitarPicker: FC<GuitarPickerProps> = ({ active, onChange }) => {
   const activeIndex = AllGuitars.findIndex(
     (guitar) => guitar.key === active.key
