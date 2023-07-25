@@ -14,7 +14,7 @@ export enum Notes {
 }
 
 /**
- * Нота
+ * РќРѕС‚Р°
  */
 export type NoteKey =
   | 'C'
@@ -31,32 +31,32 @@ export type NoteKey =
   | 'B';
 
 /**
- * Массив нот на грифе
+ * РњР°СЃСЃРёРІ РЅРѕС‚ РЅР° РіСЂРёС„Рµ
  */
 export type NeckNotes = Array<Array<NoteKey>>;
 
 /**
- * Строй инструмента (набор нот с самой нижней струны по тону)
+ * РЎС‚СЂРѕР№ РёРЅСЃС‚СЂСѓРјРµРЅС‚Р° (РЅР°Р±РѕСЂ РЅРѕС‚ СЃ СЃР°РјРѕР№ РЅРёР¶РЅРµР№ СЃС‚СЂСѓРЅС‹ РїРѕ С‚РѕРЅСѓ)
  */
 export type TuningNotes = Array<number>;
 
 /**
- * Ноты на ладу
+ * РќРѕС‚С‹ РЅР° Р»Р°РґСѓ
  */
 export type FretNotes = Array<NoteKey>;
 
 /**
- * Гамма (интервал в цифрах от ключа)
+ * Р“Р°РјРјР° (РёРЅС‚РµСЂРІР°Р» РІ С†РёС„СЂР°С… РѕС‚ РєР»СЋС‡Р°)
  */
 export type GammaIntervals = Array<number>;
 
 /**
- * Гамма (интервал в нотах)
+ * Р“Р°РјРјР° (РёРЅС‚РµСЂРІР°Р» РІ РЅРѕС‚Р°С…)
  */
 export type GammaNotes = Array<NoteKey>;
 
 /**
- * Гамма (элемент)
+ * Р“Р°РјРјР° (СЌР»РµРјРµРЅС‚)
  */
 export type ScaleItem = {
   name: string;
@@ -64,7 +64,7 @@ export type ScaleItem = {
 };
 
 /**
- * Гитарный строй (элемент)
+ * Р“РёС‚Р°СЂРЅС‹Р№ СЃС‚СЂРѕР№ (СЌР»РµРјРµРЅС‚)
  */
 export type TuningItem = {
   name: string;

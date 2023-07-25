@@ -1,15 +1,15 @@
 import { FC, useEffect, useRef } from 'react';
 
-import { NOTES, NoteKey } from '../../../../../utils/tunes';
+import { ScaleItem, Scales } from '../../../utils/tunes';
 import { PickerWrapper } from './PickerWrapper';
 import { ControlButton } from './ControlButton';
 
-interface KeyPickerProps {
-  active: NoteKey;
-  onChange: (key: NoteKey) => void;
+interface ScalePickerProps {
+  active: ScaleItem;
+  onChange: (scale: ScaleItem) => void;
 }
 
-export const KeyPicker: FC<KeyPickerProps> = ({ onChange, active }) => {
+export const ScalePicker: FC<ScalePickerProps> = ({ onChange, active }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const selectedItemRef = useRef<HTMLButtonElement>(null);
   useEffect(() => {
@@ -23,18 +23,17 @@ export const KeyPicker: FC<KeyPickerProps> = ({ onChange, active }) => {
 
   return (
     <PickerWrapper ref={scrollRef}>
-      {NOTES.map((item) => {
+      {Scales.map((scale) => {
         return (
           <ControlButton
-            formType="circle"
-            active={active === item}
-            key={item}
-            ref={active === item ? selectedItemRef : null}
+            active={active.name === scale.name}
+            ref={active.name === scale.name ? selectedItemRef : null}
+            key={scale.name}
             onClick={() => {
-              onChange(item);
+              onChange(scale);
             }}
           >
-            {item}
+            {scale.name}
           </ControlButton>
         );
       })}

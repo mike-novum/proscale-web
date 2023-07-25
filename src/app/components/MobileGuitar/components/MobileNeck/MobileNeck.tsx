@@ -7,7 +7,7 @@ import {
   TuningItem,
   generateGamma,
   generateNeck,
-} from '../../../../../../utils/tunes';
+} from '../../../../utils/tunes';
 import {
   FretCell,
   FretNumber,

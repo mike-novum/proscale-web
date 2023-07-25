@@ -10,11 +10,11 @@ import {
   Scales,
   TuningItem,
   Tunings6,
-} from '../../../../utils/tunes';
+} from '../../utils/tunes';
 import { ScalePicker } from './components/ScalePicker';
 import { KeyPicker } from './components/KeyPicker';
 import { TuningPicker } from './components/TuningPicker';
-import { getTunings } from '../utils';
+import { getTunings } from '../../utils/tunes/utils';
 import { GuitarPicker } from './components/GuitarPicker';
 import { MobileNeck } from './components/MobileNeck';
 
