@@ -1,13 +1,13 @@
 /* eslint-disable react/no-array-index-key */
 import type { FC } from 'react';
 import styled from 'styled-components';
+import { Note, Range, Scale } from 'tonal';
 
 import {
+  NOTES,
   NoteKey,
-  ScaleItem,
   TuningItem,
   generateGamma,
-  generateNeck,
 } from '../../../utils/tunes';
 import { useWindowSize } from '../../../utils/window';
 import {
@@ -17,7 +17,7 @@ import {
   FretWrapper,
   FretsWrapper,
   NeckWrapper,
-  Note,
+  Note as NoteComponent,
   Strings,
 } from './components';
 import { isBigFret } from '../utils';
@@ -25,7 +25,7 @@ import { isBigFret } from '../utils';
 export interface NeckProps {
   noteKey: NoteKey;
   tuning: TuningItem;
-  scale: ScaleItem;
+  scale: string;
 }
 
 const getFretWidth = (screenWidth: number | undefined): number => {
@@ -81,12 +81,51 @@ const getNeckHeight = (stringCount: number): number => {
   return 300;
 };
 
+const generateNeck = (tuning: TuningItem): string[][] => {
+  // fix this pizdec;
+  const fretsCount = 26;
+  const rez = tuning.notes.map((note) => {
+    return Range.numeric([1, fretsCount]).map(
+      Scale.degrees(`${note} chromatic`)
+    );
+  });
+
+  const mass: string[][] = [];
+
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < fretsCount; i++) {
+    const fret: string[] = [];
+
+    rez.forEach((item) => {
+      fret.push(item[i]);
+    });
+    mass.push(fret);
+  }
+
+  return mass;
+};
+
+const isNoteFromScale = (note: string, scaleNotes: string[]) => {
+  return true;
+};
+
 export const DesktopNeck: FC<NeckProps> = ({ noteKey, tuning, scale }) => {
-  const neckNotes = generateNeck(tuning.notes);
-  const scaleNotes = generateGamma(noteKey, scale.intervals);
+  const neckNotes = generateNeck(tuning);
+  const scaleNotes = Scale.get(`${noteKey} ${scale}`).notes;
+
+  console.log('Scale:', Scale.get(`${noteKey} ${scale}`));
+  console.log('NeckNotes:', neckNotes);
+  console.log('ScalesNotes:', scaleNotes);
+  console.log('tuning:', tuning);
+  console.log('scale:', scale);
 
   const { width: screenWidth } = useWindowSize();
   const fretSize = getFretWidth(screenWidth);
+
+  // console.log(Scale.get());
+
+  console.log(Note.midi('Ab5'));
+  console.log(Note.midi('G#5'));
 
   return (
     <NeckWrapper>
@@ -106,11 +145,9 @@ export const DesktopNeck: FC<NeckProps> = ({ noteKey, tuning, scale }) => {
             >
               {_fret.map((note, noteIndex) => (
                 <FretCell key={note + noteIndex}>
-                  <Note
+                  <NoteComponent
                     isFirstFret={fretIndex === 0}
-                    isActive={
-                      scaleNotes.find((nt) => nt === note) !== undefined
-                    }
+                    isActive={isNoteFromScale(note, scaleNotes)}
                     tonica={noteKey}
                     note={note}
                   />

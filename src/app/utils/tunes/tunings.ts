@@ -1,16 +1,16 @@
 import type { TuningItem, TuningNotes } from './types';
 
 // 6string Tunings
-export const standart_6: TuningNotes = [4, 9, 2, 7, 11, 4];
-export const dropD_6: TuningNotes = [2, 9, 2, 7, 11, 4];
-export const dropC_6: TuningNotes = [0, 7, 0, 5, 9, 2];
-export const dropB_6: TuningNotes = [11, 6, 11, 4, 8, 1];
-export const openC_6: TuningNotes = [0, 8, 0, 8, 0, 4];
-export const doubleDropD_6: TuningNotes = [2, 9, 2, 7, 11, 2];
-export const DADGAD_6: TuningNotes = [2, 9, 2, 7, 9, 2];
-export const DADDAD_6: TuningNotes = [2, 9, 2, 2, 9, 2];
-export const openD_6: TuningNotes = [2, 9, 2, 6, 9, 2];
-export const openG_6: TuningNotes = [2, 5, 2, 5, 11, 2];
+export const standart_6: string[] = ['E3', 'A3', 'D4', 'G4', 'B4', 'E5'];
+export const dropD_6: string[] = ['D3', 'A3', 'D4', 'G4', 'B4', 'E5'];
+export const dropC_6: string[] = ['C3', 'G3', 'C4', 'F4', 'A4', 'D5'];
+export const dropB_6: string[] = ['B2', 'F#3', 'B3', 'E4', 'G#4', 'C#5'];
+export const openC_6: string[] = ['C3', 'G#3', 'C4', 'G#4', 'C5', 'E5'];
+export const doubleDropD_6: string[] = ['D3', 'A3', 'D4', 'G4', 'B4', 'D5'];
+export const DADGAD_6: string[] = ['D3', 'A3', 'D4', 'G4', 'A4', 'D5'];
+export const DADDAD_6: string[] = ['D3', 'A3', 'D4', 'D4', 'A4', 'D5'];
+export const openD_6: string[] = ['D3', 'A3', 'D4', 'F#4', 'A4', 'D5'];
+export const openG_6: string[] = ['D3', 'F3', 'D4', 'F4', 'B4', 'D5'];
 
 // 7string Tunings
 
@@ -144,8 +144,8 @@ export const TuningsUkulele: TuningItem[] = [
 
 export const Tunings = {
   Tunings6,
-  Tunings7,
-  Tunings8,
-  TuningsBass,
-  TuningsUkulele,
+  // Tunings7,
+  // Tunings8,
+  // TuningsBass,
+  // TuningsUkulele,
 };

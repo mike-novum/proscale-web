@@ -11,9 +11,9 @@ import type {
 const COUNT_OF_FRETS = 26;
 
 /**
- * Функция для генерации нот на гитарном грифе
- * @param tuning - строй гитары
- * @returns  - массив нот всего грифа
+ * Р¤СѓРЅРєС†РёСЏ РґР»СЏ РіРµРЅРµСЂР°С†РёРё РЅРѕС‚ РЅР° РіРёС‚Р°СЂРЅРѕРј РіСЂРёС„Рµ
+ * @param tuning - СЃС‚СЂРѕР№ РіРёС‚Р°СЂС‹
+ * @returns  - РјР°СЃСЃРёРІ РЅРѕС‚ РІСЃРµРіРѕ РіСЂРёС„Р°
  */
 export const generateNeck = (tuning: TuningNotes): NeckNotes => {
   const mass: NeckNotes = [];
@@ -31,9 +31,9 @@ export const generateNeck = (tuning: TuningNotes): NeckNotes => {
 };
 
 /**
- *  Функция для генерации гаммы (в нотах)
- * @param key - тоника
- * @param intervals  - интервалы гаммы
+ *  Р¤СѓРЅРєС†РёСЏ РґР»СЏ РіРµРЅРµСЂР°С†РёРё РіР°РјРјС‹ (РІ РЅРѕС‚Р°С…)
+ * @param key - С‚РѕРЅРёРєР°
+ * @param intervals  - РёРЅС‚РµСЂРІР°Р»С‹ РіР°РјРјС‹
  * @returns
  */
 export const generateGamma = (
@@ -58,11 +58,11 @@ export const generateGamma = (
 };
 
 /**
- * Функция для генерации нот клавиатуры пианино
+ * Р¤СѓРЅРєС†РёСЏ РґР»СЏ РіРµРЅРµСЂР°С†РёРё РЅРѕС‚ РєР»Р°РІРёР°С‚СѓСЂС‹ РїРёР°РЅРёРЅРѕ
  */
 export const generatePianoKeyboard = (): NoteKey[] => {
   return [...NOTES, ...NOTES, ...NOTES, ...NOTES, ...NOTES, ...NOTES, ...NOTES];
 };
 
-// TODO: перенести в другое место
+// TODO: РїРµСЂРµРЅРµСЃС‚Рё РІ РґСЂСѓРіРѕРµ РјРµСЃС‚Рѕ
 export const PianoKeyboardNotes = generatePianoKeyboard();

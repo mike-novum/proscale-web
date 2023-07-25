@@ -1,12 +1,10 @@
 import { FC, memo, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import type { NoteKey } from '../../../../utils/tunes';
-
 export interface NoteProps {
-  tonica: NoteKey;
+  tonica: string;
   isActive: boolean;
-  note: NoteKey;
+  note: string;
   isFirstFret: boolean;
 }
 
@@ -85,7 +83,7 @@ const NoteText = styled.div`
   font-size: 12px;
   line-height: 12px;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-family: system-ui, sans-serif;
 
   @media (max-width: 1366px) {

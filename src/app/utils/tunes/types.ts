@@ -68,5 +68,5 @@ export type ScaleItem = {
  */
 export type TuningItem = {
   name: string;
-  notes: TuningNotes;
+  notes: string[];
 };

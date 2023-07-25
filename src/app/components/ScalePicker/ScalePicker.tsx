@@ -1,12 +1,12 @@
-import type { FC } from 'react';
+import { useMemo, type FC } from 'react';
 import styled from 'styled-components';
+import { Scale } from 'tonal';
 
-import { ScaleItem, Scales } from '../../utils/tunes';
 import { ControlButton } from '../../ui';
 
 interface ScalePickerProps {
-  active: ScaleItem;
-  onChange: (scale: ScaleItem) => void;
+  active: string;
+  onChange: (scale: string) => void;
 }
 
 const PickerWrapper = styled.div`
@@ -16,6 +16,9 @@ const PickerWrapper = styled.div`
   justify-content: center;
   gap: 8px;
   max-width: 1024px;
+  max-height: 300px;
+  overflow: hidden;
+  overflow-y: scroll;
   background: ${(props) => props.theme.colors.card};
   box-sizing: border-box;
   border-radius: 20px;
@@ -31,18 +34,19 @@ const PickerWrapper = styled.div`
 `;
 
 export const ScalePicker: FC<ScalePickerProps> = ({ onChange, active }) => {
+  const scaleNames = useMemo(() => Scale.names(), []);
   return (
     <PickerWrapper>
-      {Scales.map((scale) => {
+      {scaleNames.map((scale) => {
         return (
           <ControlButton
-            active={active.name === scale.name}
-            key={scale.name}
+            active={active === scale}
+            key={scale}
             onClick={() => {
               onChange(scale);
             }}
           >
-            {scale.name}
+            {scale}
           </ControlButton>
         );
       })}
