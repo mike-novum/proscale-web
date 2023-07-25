@@ -2,7 +2,7 @@ import { FC, memo, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 export interface NoteProps {
-  tonica: string;
+  isTonica: boolean;
   isActive: boolean;
   note: string;
   isFirstFret: boolean;
@@ -14,10 +14,12 @@ type NoteWrapperProps = {
   isFirstFret: boolean;
 };
 
+// TODO: move to other file
 const SIZE = 32;
 const SIZE_M = 28;
 const SIZE_S = 22;
 
+// TODO: move to other file
 const NoteWrapper = styled.div<NoteWrapperProps>`
   display: flex;
   align-items: center;
@@ -78,6 +80,7 @@ const NoteWrapper = styled.div<NoteWrapperProps>`
   }
 `;
 
+// TODO: move to other file
 const NoteText = styled.div`
   color: #fff;
   font-size: 12px;
@@ -91,7 +94,7 @@ const NoteText = styled.div`
   }
 `;
 
-const _Note: FC<NoteProps> = ({ note, tonica, isActive, isFirstFret }) => {
+const _Note: FC<NoteProps> = ({ note, isTonica, isActive, isFirstFret }) => {
   const [show, setShow] = useState<boolean>(false);
   useEffect(() => {
     if (isActive !== show) {
@@ -100,19 +103,15 @@ const _Note: FC<NoteProps> = ({ note, tonica, isActive, isFirstFret }) => {
   }, [isActive, show]);
 
   return (
-    <NoteWrapper
-      isFirstFret={isFirstFret}
-      isActive={show}
-      isTonica={tonica === note}
-    >
+    <NoteWrapper isFirstFret={isFirstFret} isActive={show} isTonica={isTonica}>
       <NoteText>{note}</NoteText>
     </NoteWrapper>
   );
 };
 
 export const Note = memo(_Note, (prevProps, nextProps) => {
-  const oldState = prevProps.note === prevProps.tonica;
-  const newState = nextProps.note === nextProps.tonica;
   const activeState = prevProps.isActive === nextProps.isActive;
-  return oldState === newState && activeState;
+  const tonicaState = prevProps.isTonica === nextProps.isTonica;
+  const noteState = prevProps.note === nextProps.note;
+  return tonicaState && activeState && noteState;
 });

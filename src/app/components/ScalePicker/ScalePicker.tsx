@@ -46,7 +46,7 @@ export const ScalePicker: FC<ScalePickerProps> = ({ onChange, active }) => {
               onChange(scale);
             }}
           >
-            {scale}
+            {scale.toUpperCase()}
           </ControlButton>
         );
       })}

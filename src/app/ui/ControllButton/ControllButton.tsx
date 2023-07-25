@@ -25,7 +25,7 @@ const ControlButtonWrapper = styled.button<ControlButtonWrapperProps>`
   border-radius: 22px;
   padding: 0px 16px;
   vertical-align: middle;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-size: 14px;
   cursor: pointer;
   user-select: none;

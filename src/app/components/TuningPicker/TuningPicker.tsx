@@ -32,7 +32,7 @@ export const TuningPicker: FC<TuningPickerProps> = ({
               onChange(item);
             }}
           >
-            {item.name}
+            {item.name.toUpperCase()}
           </ControlButton>
         );
       })}

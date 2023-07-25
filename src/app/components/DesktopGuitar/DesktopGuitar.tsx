@@ -7,19 +7,13 @@ import {
   ScalePicker,
   TuningPicker,
 } from '..';
-import {
-  AllGuitars,
-  Guitar,
-  NoteKey,
-  TuningItem,
-  Tunings6,
-} from '../../utils/tunes';
+import { AllGuitars, Guitar, TuningItem, Tunings6 } from '../../utils/tunes';
 import { DesktopWrapper } from './components';
 import { getTunings } from '../../utils/tunes/utils';
 
 export const DesktopGuitar: FC = () => {
   const [scale, setScale] = useState<string>('minor');
-  const [key, setKey] = useState<NoteKey>('C');
+  const [key, setKey] = useState<string>('C');
 
   const [guitar, setGuitar] = useState<Guitar>(AllGuitars[0]);
 
