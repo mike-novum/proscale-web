@@ -1,6 +1,6 @@
 import { FC, useEffect, useRef } from 'react';
+import { NOTES, NoteKey } from 'utils/tunes';
 
-import { NOTES, NoteKey } from '../../../utils/tunes';
 import { PickerWrapper } from './PickerWrapper';
 import { ControlButton } from './ControlButton';
 

@@ -1,15 +1,15 @@
 import { FC, useCallback, useState } from 'react';
+import { AllGuitars, Guitar, TuningItem, Tunings6 } from 'utils/tunes';
+import { getTunings } from 'utils/tunes/utils';
 
 import {
-  DesktopNeck,
+  Neck,
   GuitarPicker,
   KeyPicker,
   ScalePicker,
   TuningPicker,
-} from '..';
-import { AllGuitars, Guitar, TuningItem, Tunings6 } from '../../utils/tunes';
-import { DesktopWrapper } from './components';
-import { getTunings } from '../../utils/tunes/utils';
+  DesktopWrapper,
+} from './components';
 
 export const DesktopGuitar: FC = () => {
   const [scale, setScale] = useState<string>('minor');
@@ -32,7 +32,7 @@ export const DesktopGuitar: FC = () => {
     <DesktopWrapper>
       <GuitarPicker active={guitar} onChange={onChangeGuitar} />
       <TuningPicker active={tuning} tunings={tunings} onChange={setTuning} />
-      <DesktopNeck noteKey={key} tuning={tuning} scale={scale} />
+      <Neck noteKey={key} tuning={tuning} scale={scale} />
       <KeyPicker active={key} onChange={setKey} />
       <ScalePicker active={scale} onChange={setScale} />
     </DesktopWrapper>

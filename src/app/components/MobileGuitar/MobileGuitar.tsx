@@ -1,7 +1,4 @@
 import { FC, useCallback, useState } from 'react';
-import styled from 'styled-components';
-
-import { ControlTabs } from './components/ControlTabs';
 import {
   AllGuitars,
   Guitar,
@@ -10,59 +7,19 @@ import {
   Scales,
   TuningItem,
   Tunings6,
-} from '../../utils/tunes';
-import { ScalePicker } from './components/ScalePicker';
-import { KeyPicker } from './components/KeyPicker';
-import { TuningPicker } from './components/TuningPicker';
+} from 'utils/tunes';
+
+import {
+  ControlTabs,
+  ControlPanelWrapper,
+  KeyPicker,
+  ScalePicker,
+  TuningPicker,
+  GuitarPicker,
+  Scroll,
+  MobileNeck,
+} from './components';
 import { getTunings } from '../../utils/tunes/utils';
-import { GuitarPicker } from './components/GuitarPicker';
-import { MobileNeck } from './components/MobileNeck';
-
-const Scroll = styled.div`
-  position: relative;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  width: 100%;
-  overflow: hidden;
-  box-sizing: border-box;
-  overflow-y: auto;
-
-  ::-webkit-scrollbar {
-    color: #95ff00;
-    width: 4px;
-    border-radius: 2px;
-  }
-  ::-webkit-scrollbar-track {
-    background-color: #ff9500;
-  }
-  ::-webkit-scrollbar-track-piece {
-    background-color: ${(props) => props.theme.colors.card};
-  }
-  ::-webkit-scrollbar-thumb {
-    width: 2px;
-    border-radius: 2px;
-    background-color: ${(props) => props.theme.colors.notification};
-  }
-`;
-
-const ControlPanelWrapper = styled.div<{ expanded: boolean }>`
-  border-radius: 16px;
-  background-color: ${(props) => props.theme.colors.card};
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-  gap: 8px;
-  padding: 16px 0px;
-  transition: 300ms;
-  height: ${(props) => (props.expanded ? '184px' : '156px')};
-
-  @media (max-width: 375px) {
-    height: ${(props) => (props.expanded ? '156px' : '128px')};
-  }
-`;
 
 export const MobileGuitar: FC = () => {
   const [tab, setTab] = useState<number>(0);

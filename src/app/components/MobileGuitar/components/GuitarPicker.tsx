@@ -1,6 +1,6 @@
 import { FC, useEffect, useRef, useState } from 'react';
+import { AllGuitars, Guitar } from 'utils/tunes';
 
-import { AllGuitars, Guitar } from '../../../utils/tunes';
 import { PickerWrapper } from './PickerWrapper';
 import { ControlButton } from './ControlButton';
 
