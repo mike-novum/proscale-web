@@ -41,6 +41,8 @@ export const Neck: FC<NeckProps> = ({ noteKey, tuning, scale }) => {
 
   const fretSize = getFretWidth(screenWidth);
 
+  // TODO: fix generations with sharps!!!
+
   return (
     <NeckWrapper>
       <FretsWrapper height={getNeckHeight(tuning.notes.length)}>

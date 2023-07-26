@@ -27,9 +27,9 @@ export const F_8: TuningNotes = [5, 10, 3, 8, 1, 6, 10, 3];
 export const E_8: TuningNotes = [4, 9, 2, 7, 0, 5, 9, 2];
 export const dropE_8: TuningNotes = [4, 11, 4, 9, 2, 7, 11, 4];
 
-export const bassStandart: TuningNotes = [4, 9, 2, 7];
-export const bassDropD: TuningNotes = [2, 9, 2, 7];
-export const bassDropC: TuningNotes = [0, 7, 0, 5];
+export const bassStandart: string[] = ['E1', 'A1', 'D2', 'G2'];
+export const bassDropD: string[] = ['D1', 'A1', 'D2', 'G2'];
+export const bassDropC: string[] = ['C1', 'G1', 'C2', 'F2'];
 
 // g c e a
 
@@ -146,6 +146,6 @@ export const Tunings = {
   Tunings6,
   // Tunings7,
   // Tunings8,
-  // TuningsBass,
+  TuningsBass,
   // TuningsUkulele,
 };

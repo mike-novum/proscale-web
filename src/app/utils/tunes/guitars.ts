@@ -18,10 +18,10 @@ export const AllGuitars: Guitar[] = [
   //   key: '8',
   //   name: '8 string',
   // },
-  // {
-  //   key: 'Bass',
-  //   name: 'Bass',
-  // },
+  {
+    key: 'Bass',
+    name: 'Bass',
+  },
   // {
   //   key: 'Ukulele',
   //   name: 'Ukulele',
