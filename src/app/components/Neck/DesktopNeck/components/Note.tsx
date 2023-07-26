@@ -1,5 +1,7 @@
-import { FC, memo, useEffect, useState } from 'react';
+import { FC, memo, useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
+
+import { playNote } from '../../../../utils/tone';
 
 export interface NoteProps {
   isTonica: boolean;
@@ -26,6 +28,8 @@ const NoteWrapper = styled.div<NoteWrapperProps>`
   justify-content: center;
   position: relative;
   user-select: none;
+
+  cursor: pointer;
 
   z-index: 1;
   width: ${SIZE}px;
@@ -102,8 +106,17 @@ const _Note: FC<NoteProps> = ({ note, isTonica, isActive, isFirstFret }) => {
     }
   }, [isActive, show]);
 
+  const onClick = useCallback(() => {
+    playNote(note);
+  }, [note]);
+
   return (
-    <NoteWrapper isFirstFret={isFirstFret} isActive={show} isTonica={isTonica}>
+    <NoteWrapper
+      onClick={onClick}
+      isFirstFret={isFirstFret}
+      isActive={show}
+      isTonica={isTonica}
+    >
       <NoteText>{note}</NoteText>
     </NoteWrapper>
   );
