@@ -1,5 +1,5 @@
 import { FC, memo, useCallback, useEffect, useState } from 'react';
-import { playNote } from 'utils/tone';
+import { playNote } from 'lib/tone';
 
 import { NoteText, NoteWrapper } from './components';
 

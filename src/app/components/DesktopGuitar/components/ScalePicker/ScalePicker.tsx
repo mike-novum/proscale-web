@@ -1,7 +1,7 @@
 import { useMemo, type FC, memo } from 'react';
 import { Scale } from 'tonal';
 import { ControlButton } from 'ui';
-import { playNotes } from 'utils/tone';
+import { playNotes } from 'lib/tone';
 
 import { ContentWrapper, PickerWrapper, PlayWrapper } from './components';
 
