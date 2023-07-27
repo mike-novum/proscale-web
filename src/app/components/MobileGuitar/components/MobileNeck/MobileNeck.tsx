@@ -1,13 +1,13 @@
 /* eslint-disable react/no-array-index-key */
 import type { FC } from 'react';
-
 import {
   NoteKey,
   ScaleItem,
   TuningItem,
   generateGamma,
   generateNeck,
-} from '../../../../utils/tunes';
+} from 'lib/tune';
+
 import {
   FretCell,
   FretNumber,

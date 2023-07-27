@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef } from 'react';
-import { ScaleItem, Scales } from 'utils/tunes';
+import { ScaleItem, Scales } from 'lib/tune';
 
 import { PickerWrapper } from './PickerWrapper';
 import { ControlButton } from './ControlButton';

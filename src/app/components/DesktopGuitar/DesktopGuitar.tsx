@@ -1,6 +1,6 @@
 import { FC, useCallback, useState } from 'react';
-import { AllGuitars, Guitar, TuningItem, Tunings6 } from 'utils/tunes';
-import { getTunings } from 'utils/tunes/utils';
+import { AllGuitars, Guitar, TuningItem, Tunings6 } from 'lib/tune';
+import { getTunings } from 'lib/tune/utils';
 
 import {
   Neck,

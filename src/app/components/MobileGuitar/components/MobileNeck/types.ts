@@ -1,8 +1,4 @@
-import type {
-  NoteKey,
-  ScaleItem,
-  TuningItem,
-} from '../../../../../../utils/tunes';
+import type { NoteKey, ScaleItem, TuningItem } from 'lib/tune';
 
 export interface NeckProps {
   noteKey: NoteKey;

@@ -7,7 +7,8 @@ import {
   Scales,
   TuningItem,
   Tunings6,
-} from 'utils/tunes';
+  getTunings,
+} from 'lib/tune';
 
 import {
   ControlTabs,
@@ -19,7 +20,6 @@ import {
   Scroll,
   MobileNeck,
 } from './components';
-import { getTunings } from '../../utils/tunes/utils';
 
 export const MobileGuitar: FC = () => {
   const [tab, setTab] = useState<number>(0);

@@ -6,6 +6,7 @@
     "baseUrl": "./src/app",
     "paths": {            
       "utils/*": ["utils/*"],                  
+      "lib/*": ["lib/*"],
       "components/*": ["components/*"],                 
       "ui/*": ["ui/*"],
     }

@@ -1,7 +1,6 @@
 import { FC, memo, useEffect, useState } from 'react';
 import styled from 'styled-components';
-
-import type { NoteKey } from '../../../../../../../utils/tunes';
+import type { NoteKey } from 'lib/tune';
 
 export interface NoteProps {
   isFirstFret: boolean;

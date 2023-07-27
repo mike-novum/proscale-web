@@ -1,5 +1,5 @@
 import { memo, type FC } from 'react';
-import { AllGuitars, Guitar } from 'utils/tunes';
+import { AllGuitars, Guitar } from 'lib/tune';
 
 import { PickerWrapper, PickerShape, PickerButton } from './components';
 import { PADDING, TAB_SIZE } from './constants';

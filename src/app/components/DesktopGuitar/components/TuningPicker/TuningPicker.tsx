@@ -1,7 +1,7 @@
 import { memo, type FC } from 'react';
 import styled from 'styled-components';
 import { ControlButton } from 'ui';
-import type { TuningItem } from 'utils/tunes';
+import type { TuningItem } from 'lib/tune';
 
 interface TuningPickerProps {
   active: TuningItem;

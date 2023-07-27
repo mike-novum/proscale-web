@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef } from 'react';
-import type { TuningItem } from 'utils/tunes';
+import type { TuningItem } from 'lib/tune';
 
 import { PickerWrapper } from './PickerWrapper';
 import { ControlButton } from './ControlButton';

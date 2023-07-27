@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import { useMemo, type FC } from 'react';
 import { Note, Scale } from 'tonal';
-import type { TuningItem } from 'utils/tunes';
+import type { TuningItem } from 'lib/tune';
 import { useWindowSize } from 'utils/window';
 
 import {
