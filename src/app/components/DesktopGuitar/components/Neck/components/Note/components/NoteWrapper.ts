@@ -46,6 +46,18 @@ export const NoteWrapper = styled.div<NoteWrapperProps>`
       : props.theme.colors.primary;
   }};
 
+  transition: 0.2s;
+
+  &:hover {
+    transition: 0.2s;
+    scale: 1.07;
+  }
+  &:active {
+    transition: 0.2s;
+    opacity: 0.7;
+    scale: 0.97;
+  }
+
   @media (max-width: 1366px) {
     transition: 200ms;
     width: ${SIZE_M}px;

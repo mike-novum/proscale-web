@@ -25,4 +25,11 @@ export const FretWrapper = styled.div<FretWrapperProps>`
   width: ${(props) => {
     return props.size ? `${props.size}px` : '50px';
   }};
+
+  &:first-child {
+    border-radius: 16px 0px 0px 16px;
+  }
+  &:nth-last-child(-n + 2) {
+    border-radius: 0px 16px 16px 0px;
+  }
 `;

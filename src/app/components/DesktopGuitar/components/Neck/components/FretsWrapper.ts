@@ -12,5 +12,5 @@ export const FretsWrapper = styled.div<FretsWrapperProps>`
   flex-direction: row;
   gap: 4px;
   border-radius: 16px;
-  overflow: hidden;
+  /* overflow: hidden; */
 `;
