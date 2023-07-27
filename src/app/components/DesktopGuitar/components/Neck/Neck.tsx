@@ -34,14 +34,13 @@ export const Neck: FC<NeckProps> = ({ noteKey, tuning, scale }) => {
   const { width: screenWidth } = useWindowSize();
 
   const neckNotes = useMemo(() => generateNeck(tuning.notes), [tuning]);
+
   const scaleNotes = useMemo(
     () => Scale.get(`${noteKey} ${scale}`).notes,
     [noteKey, scale]
   );
 
   const fretSize = getFretWidth(screenWidth);
-
-  // TODO: fix generations with sharps!!!
 
   return (
     <NeckWrapper>

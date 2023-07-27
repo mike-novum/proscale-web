@@ -45,7 +45,11 @@ export const generateNeck = (tuningNotes: string[]): string[][] => {
 };
 
 export const isNoteInScale = (note: string, scaleNotes: string[]): boolean => {
-  return scaleNotes.includes(Note.pitchClass(note));
+  const founded = scaleNotes.find((scaleNote) => {
+    return Note.chroma(note) === Note.chroma(scaleNote);
+  });
+
+  return founded !== undefined;
 };
 
 export const getFretWidth = (screenWidth: number | undefined): number => {
