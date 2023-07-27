@@ -8,8 +8,10 @@ import type {
   TuningNotes,
 } from './types';
 
+// TODO: DEPRECATED
 const COUNT_OF_FRETS = 26;
 
+// TODO: DEPRECATED
 /**
  * Функция для генерации нот на гитарном грифе
  * @param tuning - строй гитары
@@ -30,6 +32,7 @@ export const generateNeck = (tuning: TuningNotes): NeckNotes => {
   return mass;
 };
 
+// TODO: DEPRECATED
 /**
  *  Функция для генерации гаммы (в нотах)
  * @param key - тоника
@@ -57,6 +60,7 @@ export const generateGamma = (
   return array;
 };
 
+// TODO: DEPRECATED
 /**
  * Функция для генерации нот клавиатуры пианино
  */

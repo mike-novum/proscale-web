@@ -1,12 +1,13 @@
 import { FC, useEffect, useRef } from 'react';
-import { NOTES, NoteKey } from 'lib/tune';
+// TODO: fix this dependence
+import { NOTES } from 'components/DesktopGuitar/components/KeyPicker/constants';
 
 import { PickerWrapper } from './PickerWrapper';
 import { ControlButton } from './ControlButton';
 
 interface KeyPickerProps {
-  active: NoteKey;
-  onChange: (key: NoteKey) => void;
+  active: string;
+  onChange: (key: string) => void;
 }
 
 export const KeyPicker: FC<KeyPickerProps> = ({ onChange, active }) => {

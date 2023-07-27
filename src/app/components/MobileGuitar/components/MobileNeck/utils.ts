@@ -1,4 +1,4 @@
-import { useWindowSize } from '../../../../utils/window';
+import { useWindowSize } from 'utils/window';
 
 /**
  * Функция, которая определяет, выделать этот лад или нет

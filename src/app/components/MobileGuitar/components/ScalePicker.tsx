@@ -1,12 +1,12 @@
-import { FC, useEffect, useRef } from 'react';
-import { ScaleItem, Scales } from 'lib/tune';
+import { FC, useEffect, useMemo, useRef } from 'react';
+import { Scale } from 'tonal';
 
 import { PickerWrapper } from './PickerWrapper';
 import { ControlButton } from './ControlButton';
 
 interface ScalePickerProps {
-  active: ScaleItem;
-  onChange: (scale: ScaleItem) => void;
+  active: string;
+  onChange: (scale: string) => void;
 }
 
 export const ScalePicker: FC<ScalePickerProps> = ({ onChange, active }) => {
@@ -21,19 +21,21 @@ export const ScalePicker: FC<ScalePickerProps> = ({ onChange, active }) => {
     }
   }, [active]);
 
+  const scaleNames = useMemo(() => Scale.names(), []);
+
   return (
     <PickerWrapper ref={scrollRef}>
-      {Scales.map((scale) => {
+      {scaleNames.map((scale) => {
         return (
           <ControlButton
-            active={active.name === scale.name}
-            ref={active.name === scale.name ? selectedItemRef : null}
-            key={scale.name}
+            active={active === scale}
+            ref={active === scale ? selectedItemRef : null}
+            key={scale}
             onClick={() => {
               onChange(scale);
             }}
           >
-            {scale.name}
+            {scale}
           </ControlButton>
         );
       })}

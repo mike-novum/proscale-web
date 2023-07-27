@@ -1,4 +1,4 @@
-import type { TuningItem, TuningNotes } from './types';
+import type { TuningItem } from './types';
 
 // 6string Tunings
 export const standart_6: string[] = ['E3', 'A3', 'D4', 'G4', 'B4', 'E5'];
@@ -14,18 +14,62 @@ export const openG_6: string[] = ['D3', 'F3', 'D4', 'F4', 'B4', 'D5'];
 
 // 7string Tunings
 
-export const standart_7: TuningNotes = [11, 4, 9, 2, 7, 11, 4];
-export const dropA_7: TuningNotes = [9, 4, 9, 2, 7, 11, 4];
-export const dropAb_7: TuningNotes = [8, 3, 8, 1, 6, 10, 3];
-export const dropG_7: TuningNotes = [7, 2, 7, 0, 5, 9, 2];
-export const dropGb_7: TuningNotes = [6, 1, 6, 11, 4, 8, 1];
+export const standart_7: string[] = ['B2', 'E3', 'A3', 'D4', 'G4', 'B4', 'E5'];
+export const dropA_7: string[] = ['A2', 'E3', 'A3', 'D4', 'G4', 'B4', 'E5'];
+export const dropAb_7: string[] = [
+  'G#2',
+  'D#3',
+  'G#3',
+  'C#4',
+  'F#4',
+  'A#4',
+  'D#5',
+];
+export const dropG_7: string[] = ['G2', 'D3', 'G3', 'C4', 'F4', 'A4', 'D5'];
+export const dropGb_7: string[] = [
+  'F#2',
+  'C#3',
+  'F#3',
+  'B3',
+  'E4',
+  'G#4',
+  'C#5',
+];
 
 // 8string Tunings
+export const standart_8: string[] = [
+  'F#2',
+  'B2',
+  'E3',
+  'A3',
+  'D4',
+  'G4',
+  'B4',
+  'E5',
+];
 
-export const standart_8: TuningNotes = [6, 11, 4, 9, 2, 7, 11, 4];
-export const F_8: TuningNotes = [5, 10, 3, 8, 1, 6, 10, 3];
-export const E_8: TuningNotes = [4, 9, 2, 7, 0, 5, 9, 2];
-export const dropE_8: TuningNotes = [4, 11, 4, 9, 2, 7, 11, 4];
+export const dropE_8: string[] = [
+  'E',
+  'B2',
+  'E3',
+  'A3',
+  'D4',
+  'G4',
+  'B4',
+  'E5',
+];
+
+export const F_8: string[] = [
+  'F2',
+  'A#2',
+  'D#3',
+  'G#3',
+  'C#4',
+  'F#4',
+  'A#4',
+  'D#5',
+];
+export const E_8: string[] = ['E2', 'A2', 'D3', 'G3', 'C4', 'F4', 'A4', 'D5'];
 
 export const bassStandart: string[] = ['E1', 'A1', 'D2', 'G2'];
 export const bassDropD: string[] = ['D1', 'A1', 'D2', 'G2'];
@@ -33,7 +77,7 @@ export const bassDropC: string[] = ['C1', 'G1', 'C2', 'F2'];
 
 // g c e a
 
-export const ukuleleStandart: TuningNotes = [7, 0, 4, 9];
+export const ukuleleStandart: string[] = ['G4', 'C4', 'E4', 'A4'];
 
 export const Tunings6: TuningItem[] = [
   {
@@ -144,8 +188,8 @@ export const TuningsUkulele: TuningItem[] = [
 
 export const Tunings = {
   Tunings6,
-  // Tunings7,
-  // Tunings8,
+  Tunings7,
+  Tunings8,
   TuningsBass,
-  // TuningsUkulele,
+  TuningsUkulele,
 };

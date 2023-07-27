@@ -5,7 +5,7 @@ import {
   ScaleItem,
   TuningItem,
   generateGamma,
-  generateNeck,
+  // generateNeck,
 } from 'lib/tune';
 
 import {
@@ -28,7 +28,8 @@ export interface NeckProps {
 }
 
 export const MobileNeck: FC<NeckProps> = ({ noteKey, tuning, scale }) => {
-  const neckNotes = generateNeck(tuning.notes);
+  // const neckNotes = generateNeck(tuning.notes);
+  const neckNotes: any[][] = [];
   const scaleNotes = generateGamma(noteKey, scale.intervals);
 
   const neckWidth = useMobileNeckWidth(tuning.notes.length);
