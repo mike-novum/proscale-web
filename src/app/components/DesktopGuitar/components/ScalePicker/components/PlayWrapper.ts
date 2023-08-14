@@ -9,12 +9,14 @@ export const PlayWrapper = styled.div`
   width: 32px;
   border-radius: 16px;
   position: relative;
-  /* TODO: add color in scheme */
-  background: #5d5e74;
 
-  /* TODO: fix hovers with parent */
+  transition: 200ms;
+  background-color: unset;
+
   &:hover {
-    /* TODO: add color in scheme */
-    background: #525367;
+    background-color: rgba(255, 255, 255, 0.07);
+  }
+  &:active {
+    transform: scale(0.9);
   }
 `;

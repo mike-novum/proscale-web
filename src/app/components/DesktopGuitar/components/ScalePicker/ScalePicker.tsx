@@ -20,7 +20,7 @@ interface ScalePickerProps {
 }
 
 const _ScalePicker: FC<ScalePickerProps> = ({ onChange, active }) => {
-  const pages = useMemo(() => splitToChunks(Scale.names()), []);
+  const pages = useMemo(() => splitToChunks(Scale.names(), 15), []);
 
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
@@ -32,6 +32,7 @@ const _ScalePicker: FC<ScalePickerProps> = ({ onChange, active }) => {
         onSlideChange={(e) => {
           setActiveIndex(e.activeIndex);
         }}
+        style={{ height: '100%' }}
       >
         {pages.map((page, index) => {
           return (
@@ -65,8 +66,8 @@ const _ScalePicker: FC<ScalePickerProps> = ({ onChange, active }) => {
           );
         })}
         <Pagination activeIndex={activeIndex} childs={pages} />
-        <NavigationButton type="prev" />
-        <NavigationButton type="next" />
+        {activeIndex !== 0 && <NavigationButton type="prev" />}
+        {activeIndex !== pages.length - 1 && <NavigationButton type="next" />}
       </Swiper>
     </PickerWrapper>
   );

@@ -34,6 +34,10 @@ const PaginationDot = styled.button<{ active: boolean }>`
     props.active
       ? props.theme.colors.primary
       : props.theme.colors.notification};
+
+  &:active {
+    opacity: 0.7;
+  }
 `;
 
 interface PaginationProps {

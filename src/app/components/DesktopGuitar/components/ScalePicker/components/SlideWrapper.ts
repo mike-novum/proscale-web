@@ -14,4 +14,6 @@ export const SlideWrapper = styled.div`
   @media (max-height: 768px) {
     padding: 8px;
   }
+
+  padding-bottom: 38px;
 `;
