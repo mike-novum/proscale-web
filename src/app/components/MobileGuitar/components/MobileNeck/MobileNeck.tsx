@@ -1,12 +1,9 @@
 /* eslint-disable react/no-array-index-key */
-import type { FC } from 'react';
-import {
-  NoteKey,
-  ScaleItem,
-  TuningItem,
-  generateGamma,
-  // generateNeck,
-} from 'lib/tune';
+import { useMemo, type FC } from 'react';
+import type { TuningItem } from 'lib/tune';
+import { Note, Scale } from 'tonal';
+import { generateNeck, isNoteInScale } from 'utils/neck';
+import { Note as NoteComponent } from 'components/Note';
 
 import {
   FretCell,
@@ -15,22 +12,24 @@ import {
   FretWrapper,
   FretsWrapper,
   NeckWrapper,
-  Note,
   Strings,
 } from './components';
 import { calculateFretSize, isBigFret, useMobileNeckWidth } from './utils';
 import { FretMarker } from './components/FretMarker';
 
 export interface NeckProps {
-  noteKey: NoteKey;
+  noteKey: string;
   tuning: TuningItem;
-  scale: ScaleItem;
+  scale: string;
 }
 
 export const MobileNeck: FC<NeckProps> = ({ noteKey, tuning, scale }) => {
-  // const neckNotes = generateNeck(tuning.notes);
-  const neckNotes: any[][] = [];
-  const scaleNotes = generateGamma(noteKey, scale.intervals);
+  const neckNotes = useMemo(() => generateNeck(tuning.notes), [tuning]);
+
+  const scaleNotes = useMemo(
+    () => Scale.get(`${noteKey} ${scale}`).notes,
+    [noteKey, scale]
+  );
 
   const neckWidth = useMobileNeckWidth(tuning.notes.length);
 
@@ -49,12 +48,11 @@ export const MobileNeck: FC<NeckProps> = ({ noteKey, tuning, scale }) => {
             >
               {_fret.map((note, noteIndex) => (
                 <FretCell key={note + noteIndex}>
-                  <Note
+                  <NoteComponent
+                    device="mobile"
                     isFirstFret={fretIndex === 0}
-                    isActive={
-                      scaleNotes.find((nt) => nt === note) !== undefined
-                    }
-                    tonica={noteKey}
+                    isActive={isNoteInScale(note, scaleNotes)}
+                    isTonica={noteKey === Note.pitchClass(note)}
                     note={note}
                   />
                 </FretCell>

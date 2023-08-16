@@ -3,6 +3,8 @@ import { useMemo, type FC } from 'react';
 import { Note, Scale } from 'tonal';
 import type { TuningItem } from 'lib/tune';
 import { useWindowSize } from 'utils/window';
+import { generateNeck } from 'utils/neck';
+import { Note as NoteComponent } from 'components';
 
 import {
   FretCell,
@@ -11,13 +13,11 @@ import {
   FretWrapper,
   FretsWrapper,
   NeckWrapper,
-  Note as NoteComponent,
   Strings,
 } from './components';
 import {
   isBigFret,
   calculateFretWidth,
-  generateNeck,
   getFretWidth,
   getNeckHeight,
   isNoteInScale,
@@ -61,6 +61,7 @@ export const Neck: FC<NeckProps> = ({ noteKey, tuning, scale }) => {
               {_fret.map((note, noteIndex) => (
                 <FretCell key={`${fretIndex}-${noteIndex}`}>
                   <NoteComponent
+                    device="desktop"
                     isFirstFret={fretIndex === 0}
                     isActive={isNoteInScale(note, scaleNotes)}
                     isTonica={noteKey === Note.pitchClass(note)}

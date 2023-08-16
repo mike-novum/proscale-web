@@ -49,7 +49,7 @@ export const standart_8: string[] = [
 ];
 
 export const dropE_8: string[] = [
-  'E',
+  'E2',
   'B2',
   'E3',
   'A3',

@@ -1,4 +1,4 @@
-import { Note, Range } from 'tonal';
+import { Note } from 'tonal';
 
 export const calculateFretWidth = (fretIndex: number, fretSize: number) =>
   Math.trunc(-Math.sqrt(40 * fretIndex) + fretSize);
@@ -15,33 +15,6 @@ export const getNeckHeight = (stringCount: number): number => {
   }
 
   return 300;
-};
-
-export const generateNeck = (tuningNotes: string[]): string[][] => {
-  const fretsCount = 25;
-
-  const rez = tuningNotes.map((note) => {
-    const noteSymbol = Note.pitchClass(note);
-    const startOctave = Note.octave(note) || 1;
-
-    return Range.chromatic([note, noteSymbol + (startOctave + 2)], {
-      sharps: false,
-    });
-  });
-
-  const mass: string[][] = [];
-
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < fretsCount; i++) {
-    const fret: string[] = [];
-
-    rez.forEach((item) => {
-      fret.push(item[i]);
-    });
-    mass.push(fret);
-  }
-
-  return mass;
 };
 
 export const isNoteInScale = (note: string, scaleNotes: string[]): boolean => {

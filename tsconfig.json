@@ -3,12 +3,16 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "react",
+    "rootDir": "./src",
+    "skipLibCheck": true,
     "baseUrl": "./src/app",
     "paths": {            
       "utils/*": ["utils/*"],                  
       "lib/*": ["lib/*"],
       "components/*": ["components/*"],                 
       "ui/*": ["ui/*"],
-    }
-  },  
+    },
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]  
 }

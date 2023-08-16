@@ -2,15 +2,15 @@ import { FC, memo, useCallback, useEffect, useState } from 'react';
 import { playNote } from 'lib/tone';
 
 import { NoteText, NoteWrapper } from './components';
+import type { NoteProps } from './types';
 
-export interface NoteProps {
-  isTonica: boolean;
-  isActive: boolean;
-  note: string;
-  isFirstFret: boolean;
-}
-
-const _Note: FC<NoteProps> = ({ note, isTonica, isActive, isFirstFret }) => {
+const _Note: FC<NoteProps> = ({
+  note,
+  isTonica,
+  device,
+  isActive,
+  isFirstFret,
+}) => {
   const [show, setShow] = useState<boolean>(false);
 
   useEffect(() => {
@@ -25,12 +25,13 @@ const _Note: FC<NoteProps> = ({ note, isTonica, isActive, isFirstFret }) => {
 
   return (
     <NoteWrapper
+      device={device}
       onClick={onClick}
       isFirstFret={isFirstFret}
       isActive={show}
       isTonica={isTonica}
     >
-      <NoteText>{note}</NoteText>
+      <NoteText device={device}>{note}</NoteText>
     </NoteWrapper>
   );
 };
