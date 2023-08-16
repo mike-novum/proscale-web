@@ -1,4 +1,4 @@
-import { isNoteEqual, isNoteInScale } from 'utils/neck';
+import { isNoteEqual, isNoteInScale } from '../utils/neck';
 
 describe('isNoteInScale Function', () => {
   const testScales = [
