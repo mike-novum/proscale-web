@@ -20,7 +20,7 @@ const ScaleWrapper = styled.div`
   flex-wrap: wrap;
   gap: 8px;
   overflow: scroll;
-  padding: 16px;
+  padding: 16px 28px;
 `;
 
 export const ContentWrapper = styled.div`

@@ -28,7 +28,7 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
   animation-iteration-count: 1;
 
   &.closing {
-    transition: 400ms;
+    transition: 300ms;
     opacity: 0;
   }
 `;

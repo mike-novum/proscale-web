@@ -22,7 +22,6 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
     };
 
     const close = () => {
-      console.log('closing...');
       setClosing(true);
     };
 
