@@ -1,4 +1,5 @@
 import type { MouseEventHandler, PropsWithChildren } from 'react';
+import type { IconType } from 'react-icons';
 
 export type ButtonType = 'default' | 'primary' | 'outlined' | 'ghost';
 
@@ -12,7 +13,7 @@ export type ButtonWrapperProps = {
 
 export interface ButtonProps extends PropsWithChildren {
   onClick?: MouseEventHandler<HTMLButtonElement>;
-  icon?: string;
+  Icon?: IconType;
   type?: ButtonType;
   iconPosition?: IconPosition;
   size?: ButtonSize;

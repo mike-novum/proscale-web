@@ -26,6 +26,10 @@ const fontSizes = {
 };
 
 const ButtonWrapper = styled.button<ButtonWrapperProps>`
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-weight: ${(props) => weights[props.size]};
   color: ${(props) => props.theme.palette.text};
   border: none;

@@ -2,8 +2,9 @@ import { FC, useCallback, useRef, useState } from 'react';
 import { AllGuitars, Guitar, TuningItem, Tunings6 } from 'lib/tune';
 import { getTunings } from 'lib/tune/utils';
 import styled from 'styled-components';
-import { ControlButton } from 'ui/ControllButton';
 import type { ModalRef } from 'ui/Modal';
+import { Button } from 'ui/Button';
+import { PiPianoKeysFill } from 'react-icons/pi';
 
 import {
   Neck,
@@ -70,25 +71,9 @@ export const DesktopGuitar: FC = () => {
       <TuningPicker active={tuning} tunings={tunings} onChange={setTuning} />
       <Neck noteKey={key} tuning={tuning} scale={scale} />
       <ControlsWrapper>
-        <ControlButton onClick={onClickScale}>
-          <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10 21C8.9 21 7.95833 20.6083 7.175 19.825C6.39167 19.0417 6 18.1 6 17C6 15.9 6.39167 14.9583 7.175 14.175C7.95833 13.3917 8.9 13 10 13C10.3833 13 10.7377 13.046 11.063 13.138C11.3883 13.23 11.7007 13.3673 12 13.55V3H18V7H14V17C14 18.1 13.6083 19.0417 12.825 19.825C12.0417 20.6083 11.1 21 10 21Z"
-                fill="white"
-              />
-            </svg>
-            <span style={{ textTransform: 'capitalize' }}>
-              {scale.toUpperCase()}
-            </span>
-          </div>
-        </ControlButton>
+        <Button onClick={onClickScale} Icon={PiPianoKeysFill}>
+          {scale.toUpperCase()}
+        </Button>
         <KeyPicker active={key} onChange={setKey} />
       </ControlsWrapper>
       <ScalesModal
