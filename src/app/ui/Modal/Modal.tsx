@@ -1,4 +1,10 @@
-import { useState, forwardRef, useImperativeHandle, useRef } from 'react';
+import {
+  useState,
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+  TransitionEventHandler,
+} from 'react';
 import { createPortal } from 'react-dom';
 
 import type { ModalProps, ModalRef } from './types';
@@ -35,7 +41,7 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
       close();
     };
 
-    const onTransitionEnd = (e) => {
+    const onTransitionEnd: TransitionEventHandler<HTMLDivElement> = (e) => {
       if (e.target !== wrapperRef.current) {
         return;
       }
