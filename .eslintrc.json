@@ -33,6 +33,7 @@
       ],
       "react/button-has-type": "off",
       "react/prop-types": "off",
+      "react/display-name":"off",
       "react/require-default-props": "off",
     //   "react/jsx-props-no-spreading": [
     //     "error",

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const ControlTabButton = styled.button<{ active?: boolean }>`
   position: relative;
   border: none;
-  outline: none;
   background: none;
   user-select: none;
   padding: 0px 8px;

@@ -23,7 +23,6 @@ const PaginationDot = styled.button<{ active: boolean }>`
   border-radius: ${PaginationDotSize}px;
 
   border: none;
-  outline: none;
   cursor: pointer;
   padding: 0;
 

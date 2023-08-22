@@ -21,7 +21,6 @@ const NavigationButtonWrapper = styled.button<{ direction: 'next' | 'prev' }>`
   z-index: 111;
   cursor: pointer;
   border: none;
-  outline: none;
   transition: 200ms;
   padding: 0;
   opacity: 0;

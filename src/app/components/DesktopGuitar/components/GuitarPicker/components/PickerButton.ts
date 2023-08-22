@@ -5,7 +5,6 @@ interface PickerButtonProps {
 }
 export const PickerButton = styled.button<PickerButtonProps>`
   background: transparent;
-  outline: none;
   cursor: pointer;
   width: 100px;
   height: 44px;

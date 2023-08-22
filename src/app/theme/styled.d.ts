@@ -24,6 +24,11 @@ declare module 'styled-components' {
     gradients: {
       main: string;
     };
+    borderRadius: {
+      s: number;
+      m: number;
+      l: number;
+    };
     colors: {
       zero: string;
       background: string;
