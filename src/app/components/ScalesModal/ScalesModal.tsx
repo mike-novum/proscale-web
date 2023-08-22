@@ -1,4 +1,4 @@
-import { PlayButton } from 'components/DesktopGuitar/components/ScalePicker/components';
+import { PlayButton } from 'components/PlayButton';
 import { playNotes } from 'lib/tone';
 import { forwardRef, useMemo, useState } from 'react';
 import styled from 'styled-components';
