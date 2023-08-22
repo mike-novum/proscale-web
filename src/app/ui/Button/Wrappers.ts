@@ -25,11 +25,11 @@ const fontSizes = {
   large: 16,
 };
 
-const ButtonWrapper = styled.button<ButtonWrapperProps>`
+export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   font-weight: ${(props) => weights[props.size]};
   color: ${(props) => props.theme.palette.text};
   border: none;
@@ -42,6 +42,11 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
   transition: 200ms;
   &:active {
     opacity: 0.7;
+  }
+
+  &:hover {
+    background-color: #35374e;
+    box-shadow: rgb(76 84 123) 0px 0px 20px -10px;
   }
 `;
 

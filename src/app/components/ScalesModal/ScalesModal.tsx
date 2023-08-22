@@ -1,12 +1,11 @@
-import { PlayButton } from 'components/PlayButton';
-import { playNotes } from 'lib/tone';
 import { forwardRef, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { Scale } from 'tonal';
 import { Card } from 'ui/Card';
-import { ControlButton } from 'ui/ControllButton';
 import { Modal, ModalRef } from 'ui/Modal';
 import { SearchBar } from 'ui/SearchBar';
+
+import { ScaleButton } from '../ScaleButton';
 
 interface ScalesModalProps {
   activeScale?: string;
@@ -70,26 +69,16 @@ export const ScalesModal = forwardRef<ModalRef, ScalesModalProps>(
             <ScaleWrapper>
               {filteredScales.map((scale) => {
                 return (
-                  <ControlButton
+                  <ScaleButton
                     active={activeScale === scale}
+                    scale={scale}
                     key={scale}
                     onClick={() => {
                       if (onChangeScale) {
                         onChangeScale(scale);
                       }
                     }}
-                  >
-                    <ContentWrapper>
-                      <span>{scale.toUpperCase()}</span>
-                      <PlayButton
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          const scaleNotes = Scale.get(`C4 ${scale}`).notes;
-                          playNotes(scaleNotes);
-                        }}
-                      />
-                    </ContentWrapper>
-                  </ControlButton>
+                  />
                 );
               })}
             </ScaleWrapper>
@@ -99,3 +88,15 @@ export const ScalesModal = forwardRef<ModalRef, ScalesModalProps>(
     );
   }
 );
+
+/* <ContentWrapper>
+                      <span>{scale.toUpperCase()}</span>
+                      <PlayButton
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const scaleNotes = Scale.get(`C4 ${scale}`).notes;
+                          playNotes(scaleNotes);
+                        }}
+                      />
+                    </ContentWrapper> 
+                  </ControlButton> */
