@@ -37,9 +37,9 @@ const ButtonWrapper = styled.button`
   justify-content: center;
 `;
 
-const ClearIcon = () => {
-  return <svg />;
-};
+// const ClearIcon = () => {
+//   return <svg />;
+// };
 
 interface SearchBarProps {
   value: string;
@@ -49,9 +49,9 @@ interface SearchBarProps {
 
 export const SearchBar: FC<SearchBarProps> = ({ value, onChange, style }) => {
   const onClickSearch = () => {};
-  const onClickClear = () => {
-    onChange('');
-  };
+  //   const onClickClear = () => {
+  //     onChange('');
+  //   };
 
   return (
     <InputWrapper style={style}>

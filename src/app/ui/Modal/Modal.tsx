@@ -1,4 +1,4 @@
-import { useState, forwardRef, useImperativeHandle } from 'react';
+import { useState, forwardRef, useImperativeHandle, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 import type { ModalProps, ModalRef } from './types';
@@ -9,11 +9,14 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
     const [mounted, setMounted] = useState(false);
     const [closing, setClosing] = useState(false);
 
+    const wrapperRef = useRef<HTMLDivElement | null>(null);
+
     const open = () => {
       setMounted(true);
     };
 
     const close = () => {
+      console.log('closing...');
       setClosing(true);
     };
 
@@ -32,7 +35,11 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
       close();
     };
 
-    const onTransitionEnd = () => {
+    const onTransitionEnd = (e) => {
+      if (e.target !== wrapperRef.current) {
+        return;
+      }
+
       if (closing === true && mounted === true) {
         if (onClosed) {
           onClosed();
@@ -47,6 +54,7 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 
     return createPortal(
       <ModalWrapper
+        ref={wrapperRef}
         overlay={overlay}
         className={closing === true ? ' closing' : undefined}
         onClick={onClickOverlay}
