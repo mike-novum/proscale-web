@@ -26,13 +26,18 @@ const Text = styled.h3`
   padding: 0px 24px;
 `;
 
-export const PagePlaceholder: FC = () => {
+interface PagePlaceholderProps {
+  text: string;
+}
+
+export const PagePlaceholder: FC<PagePlaceholderProps> = ({ text }) => {
   return (
     <Wrapper>
       <PlaceholderImage src="./mobile_not_found.svg" />
       <Header>Oops!</Header>
       <Text>
-        Разработчик решил выкатить мобильную версию позже и пошел пить кофе...
+        {text ||
+          'Разработчик решил выкатить мобильную версию позже и пошел пить кофе...'}
       </Text>
     </Wrapper>
   );

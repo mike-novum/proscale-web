@@ -25,7 +25,7 @@ const ControlButtonWrapper = styled.button<ControlButtonWrapperProps>`
   border-radius: 22px;
   padding: 0px 16px;
   vertical-align: middle;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-size: 14px;
   cursor: pointer;
   user-select: none;
@@ -76,15 +76,19 @@ export const ControlButton: FC<ControlButtonProps> = ({
 }) => {
   return (
     <ControlButtonWrapper active={active} onClick={onClick} formType={formType}>
-      <div
-        style={{
-          userSelect: 'none',
-          fontFamily: 'system-ui, sans-serif',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        {children}
-      </div>
+      {typeof children === 'string' ? (
+        <div
+          style={{
+            userSelect: 'none',
+            fontFamily: 'system-ui, sans-serif',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {children}
+        </div>
+      ) : (
+        children
+      )}
     </ControlButtonWrapper>
   );
 };

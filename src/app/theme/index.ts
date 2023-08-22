@@ -23,6 +23,11 @@ export const defaultTheme: DefaultTheme = {
   gradients: {
     main: 'linear-gradient(45deg, #b781ff, #87e5d6)',
   },
+  borderRadius: {
+    s: 8,
+    m: 16,
+    l: 24,
+  },
   colors: {
     zero: '#0c0c0c',
     background: '#111111',
@@ -57,6 +62,11 @@ export const megaTheme: DefaultTheme = {
   },
   gradients: {
     main: 'linear-gradient(45deg, #b781ff, #87e5d6)',
+  },
+  borderRadius: {
+    s: 8,
+    m: 16,
+    l: 24,
   },
   colors: {
     zero: '#0b0c13',
