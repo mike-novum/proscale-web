@@ -2,21 +2,14 @@ import { playNotes } from 'lib/tone';
 import type { FC } from 'react';
 import styled from 'styled-components';
 import { Scale } from 'tonal';
-import { ButtonWrapper } from 'ui/Button';
 import { FaPlay } from 'react-icons/fa';
-import { megaTheme } from 'theme';
+import { Wrappers } from 'ui/Button/Wrappers';
 
 interface ScaleButtonProps {
   active?: boolean;
   scale: string;
   onClick: () => void;
 }
-
-const Container = styled(ButtonWrapper)`
-  text-transform: capitalize;
-  padding-left: 22px;
-  padding-right: 2px;
-`;
 
 const PlayButton = styled.div`
   position: relative;
@@ -43,14 +36,16 @@ export const ScaleButton: FC<ScaleButtonProps> = ({
   active,
   onClick,
 }) => {
+  const Container = active ? Wrappers.primaryWrapper : Wrappers.defaultWrapper;
+
   return (
     <Container
       size="default"
       onClick={onClick}
       style={{
-        background: active
-          ? megaTheme.gradients.main
-          : megaTheme.colors.notification,
+        paddingLeft: 22,
+        paddingRight: 2,
+        textTransform: 'capitalize',
       }}
     >
       <span>{scale}</span>
