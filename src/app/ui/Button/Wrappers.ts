@@ -29,19 +29,26 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   font-weight: ${(props) => weights[props.size]};
   color: ${(props) => props.theme.palette.text};
   border: none;
   height: ${(props) => sizes[props.size]}px;
+  width: ${(props) =>
+    props.shape === 'circle' ? `${sizes[props.size]}px` : 'auto'};
+
   border-radius: ${(props) => sizes[props.size] / 2}px;
-  padding: 0px ${(props) => paddings[props.size]}px;
+
+  padding: ${(props) =>
+    props.shape === 'circle' ? '0px' : `0px ${paddings[props.size]}px`};
+
   font-size: ${(props) => fontSizes[props.size]}px;
   cursor: pointer;
 
   transition: 200ms;
   &:active {
-    opacity: 0.7;
+    opacity: 0.85;
   }
 
   &:hover {
@@ -61,7 +68,7 @@ export const Wrappers = {
   `,
   primaryWrapper: styled(ButtonWrapper)`
     border: none;
-    background: linear-gradient(45deg, rgb(250 118 223), rgb(72 98 200));
+    background: ${(props) => props.theme.gradients.main};
   `,
   ghostWrapper: styled(ButtonWrapper)`
     background-color: transparent;

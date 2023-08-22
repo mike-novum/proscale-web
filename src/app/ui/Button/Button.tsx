@@ -10,11 +10,12 @@ export const Button: FC<ButtonProps> = ({
   onClick,
   Icon,
   iconPosition = 'left',
+  shape,
 }) => {
   const Container = Wrappers[`${type}Wrapper`];
 
   return (
-    <Container size={size} onClick={onClick}>
+    <Container size={size} onClick={onClick} shape={shape}>
       {Icon && iconPosition === 'left' && <Icon size={18} />}
       <span>{children}</span>
       {Icon && iconPosition === 'right' && <Icon size={18} />}

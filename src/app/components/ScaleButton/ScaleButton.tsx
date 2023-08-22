@@ -49,7 +49,7 @@ export const ScaleButton: FC<ScaleButtonProps> = ({
       onClick={onClick}
       style={{
         background: active
-          ? 'linear-gradient(45deg, rgb(250 118 223), rgb(72 98 200))'
+          ? megaTheme.gradients.main
           : megaTheme.colors.notification,
       }}
     >

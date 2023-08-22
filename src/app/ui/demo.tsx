@@ -37,7 +37,7 @@ export const DemoStand: FC = () => {
         <Button type="outlined">Outline</Button>
         <Button type="ghost">Ghost</Button>
       </div>
-      <h2>default size</h2>
+      <h2>large size</h2>
       <div style={{ marginTop: 20, gap: 8, display: 'flex' }}>
         <Button size="large">Default</Button>
         <Button size="large" type="primary">
@@ -47,6 +47,19 @@ export const DemoStand: FC = () => {
           Outline
         </Button>
         <Button size="large" type="ghost">
+          Ghost
+        </Button>
+      </div>
+      <h2>Circle size</h2>
+      <div style={{ marginTop: 20, gap: 8, display: 'flex' }}>
+        <Button shape="circle">Default</Button>
+        <Button shape="circle" type="primary">
+          Primary
+        </Button>
+        <Button shape="circle" type="outlined">
+          Outline
+        </Button>
+        <Button shape="circle" type="ghost">
           Ghost
         </Button>
       </div>

@@ -7,8 +7,11 @@ export type IconPosition = 'left' | 'right';
 
 export type ButtonSize = 'small' | 'default' | 'large';
 
+export type ButtonShape = 'rect' | 'circle';
+
 export type ButtonWrapperProps = {
   size: ButtonSize;
+  shape?: ButtonShape;
 };
 
 export interface ButtonProps extends PropsWithChildren {
@@ -17,4 +20,5 @@ export interface ButtonProps extends PropsWithChildren {
   type?: ButtonType;
   iconPosition?: IconPosition;
   size?: ButtonSize;
+  shape?: ButtonShape;
 }
