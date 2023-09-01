@@ -35,11 +35,10 @@ const desktopStyles = css`
   transition: 0.2s;
 
   &:hover {
-    transition: 0.2s;
-    scale: 1.07;
+    box-shadow: rgb(76 80 121) 0px 0px 20px 2px;
   }
+
   &:active {
-    transition: 0.2s;
     opacity: 0.7;
     scale: 0.97;
   }

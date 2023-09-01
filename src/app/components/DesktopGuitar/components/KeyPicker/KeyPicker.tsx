@@ -1,5 +1,5 @@
 import { memo, type FC } from 'react';
-import { ControlButton } from 'ui';
+import { Button } from 'ui';
 
 import { PickerWrapper } from './compontents';
 import { NOTES } from './constants';
@@ -14,16 +14,16 @@ const _KeyPicker: FC<KeyPickerProps> = ({ active, onChange }) => {
     <PickerWrapper>
       {NOTES.map((item) => {
         return (
-          <ControlButton
-            formType="circle"
-            active={active === item}
+          <Button
+            shape="circle"
+            type={active === item ? 'primary' : 'default'}
             key={item}
             onClick={() => {
               onChange(item);
             }}
           >
             {item}
-          </ControlButton>
+          </Button>
         );
       })}
     </PickerWrapper>

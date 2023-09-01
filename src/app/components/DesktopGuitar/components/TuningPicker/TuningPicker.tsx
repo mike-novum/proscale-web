@@ -1,6 +1,6 @@
 import { memo, type FC } from 'react';
 import styled from 'styled-components';
-import { ControlButton } from 'ui';
+import { Button } from 'ui';
 import type { TuningItem } from 'lib/tune';
 
 interface TuningPickerProps {
@@ -24,15 +24,15 @@ const _TuningPicker: FC<TuningPickerProps> = ({
     <PickerWrapper>
       {tunings.map((item) => {
         return (
-          <ControlButton
-            active={active.name === item.name}
+          <Button
+            type={active.name === item.name ? 'primary' : 'default'}
             key={item.name}
             onClick={() => {
               onChange(item);
             }}
           >
             {item.name.toUpperCase()}
-          </ControlButton>
+          </Button>
         );
       })}
     </PickerWrapper>
