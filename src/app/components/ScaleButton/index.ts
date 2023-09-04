@@ -1,1 +1,0 @@
-export { ScaleButton } from './ScaleButton';

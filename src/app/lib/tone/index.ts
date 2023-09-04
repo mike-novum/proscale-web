@@ -1,1 +1,1 @@
-export { playNote, playNotes } from './tone';
+export * from './tone';

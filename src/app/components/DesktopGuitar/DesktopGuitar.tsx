@@ -1,10 +1,12 @@
-import { FC, useCallback, useRef, useState } from 'react';
+import { FC, useCallback, useMemo, useRef, useState } from 'react';
 import { AllGuitars, Guitar, TuningItem, Tunings6 } from 'lib/tune';
 import { getTunings } from 'lib/tune/utils';
 import styled from 'styled-components';
 import type { ModalRef } from 'ui/Modal';
-import { Button } from 'ui/Button';
-import { PiPianoKeysFill } from 'react-icons/pi';
+import { LuSettings2 } from 'react-icons/lu';
+import { Scale } from 'tonal';
+import { MultiButton } from 'ui/MultiButton';
+import { getChordName, type ChordType, getChordNotes } from 'lib/tonal';
 
 import {
   Neck,
@@ -14,6 +16,7 @@ import {
   DesktopWrapper,
 } from './components';
 import { ScalesModal } from '../ScalesModal';
+import { ChordsModal } from '../ChordsModal';
 
 const ControlsWrapper = styled.div`
   position: relative;
@@ -36,8 +39,25 @@ const ControlsWrapper = styled.div`
   }
 `;
 
+const initChord: ChordType = {
+  aliases: ['m', 'min', '-'],
+  chroma: '100100010000',
+  empty: false,
+  intervals: ['1P', '3m', '5P'],
+  name: 'minor',
+  normalized: '100001001000',
+  quality: 'Minor',
+  setNum: 2320,
+};
+
+type Mode = 'scale' | 'chord';
+
 export const DesktopGuitar: FC = () => {
+  const [mode, setMode] = useState<Mode>('scale');
+
   const [scale, setScale] = useState<string>('minor');
+  const [chord, setChord] = useState<ChordType>(initChord);
+
   const [key, setKey] = useState<string>('C');
 
   const [guitar, setGuitar] = useState<Guitar>(AllGuitars[0]);
@@ -45,6 +65,11 @@ export const DesktopGuitar: FC = () => {
   const [tuning, setTuning] = useState<TuningItem>(Tunings6[0]);
 
   const [tunings, setTunings] = useState<TuningItem[]>(Tunings6);
+
+  const clickMode = useCallback(
+    (_mode: Mode) => () => setMode(_mode),
+    [setMode]
+  );
 
   const onChangeGuitar = useCallback((_guitar: Guitar) => {
     const _tunings = getTunings(_guitar.key);
@@ -54,9 +79,17 @@ export const DesktopGuitar: FC = () => {
   }, []);
 
   const modalRef = useRef<ModalRef | null>(null);
+  const chordsModalRef = useRef<ModalRef | null>(null);
+
   const onClickScale = useCallback(() => {
     if (modalRef) {
       modalRef.current?.open();
+    }
+  }, []);
+
+  const onClickChord = useCallback(() => {
+    if (chordsModalRef) {
+      chordsModalRef.current?.open();
     }
   }, []);
 
@@ -65,21 +98,53 @@ export const DesktopGuitar: FC = () => {
     modalRef.current?.close();
   }, []);
 
+  const onChangeChord = useCallback((_chord: ChordType) => {
+    setChord(_chord);
+    chordsModalRef.current?.close();
+  }, []);
+
+  const scaleNotes = useMemo(
+    () => Scale.get(`${key} ${scale}`).notes,
+    [key, scale]
+  );
+
+  const visibleNotes =
+    mode === 'scale' ? scaleNotes : getChordNotes(key, chord);
+
   return (
     <DesktopWrapper>
       <GuitarPicker active={guitar} onChange={onChangeGuitar} />
       <TuningPicker active={tuning} tunings={tunings} onChange={setTuning} />
-      <Neck noteKey={key} tuning={tuning} scale={scale} />
+      <Neck noteKey={key} tuning={tuning} visibleNotes={visibleNotes} />
       <ControlsWrapper>
-        <Button onClick={onClickScale} Icon={PiPianoKeysFill}>
-          {scale.toUpperCase()}
-        </Button>
+        <MultiButton
+          active={mode === 'scale'}
+          Icon={LuSettings2}
+          iconSize={18}
+          label={scale.toUpperCase()}
+          onClick={clickMode('scale')}
+          onClickSub={onClickScale}
+        />
+        <MultiButton
+          active={mode === 'chord'}
+          Icon={LuSettings2}
+          iconSize={18}
+          label={getChordName(key, chord)}
+          onClick={clickMode('chord')}
+          onClickSub={onClickChord}
+        />
         <KeyPicker active={key} onChange={setKey} />
       </ControlsWrapper>
       <ScalesModal
         activeScale={scale}
         ref={modalRef}
         onChangeScale={onChangeScale}
+      />
+      <ChordsModal
+        activeKey={key}
+        activeChord={chord}
+        ref={chordsModalRef}
+        onChangeChord={onChangeChord}
       />
     </DesktopWrapper>
   );

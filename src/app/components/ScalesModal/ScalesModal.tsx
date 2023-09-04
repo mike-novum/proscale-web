@@ -2,10 +2,9 @@ import { forwardRef, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { Scale } from 'tonal';
 import { Card } from 'ui/Card';
-import { Modal, ModalRef } from 'ui/Modal';
-import { SearchBar } from 'ui/SearchBar';
-
-import { ScaleButton } from '../ScaleButton';
+import { Modal, ModalRef, SearchBar, MultiButton } from 'ui';
+import { FaPlay } from 'react-icons/fa';
+import { playNotes } from 'lib/tone';
 
 interface ScalesModalProps {
   activeScale?: string;
@@ -61,6 +60,7 @@ export const ScalesModal = forwardRef<ModalRef, ScalesModalProps>(
           <SearchBar
             value={search}
             onChange={onChangeSearch}
+            placeholder="Enter scale name..."
             style={{ margin: '0px 16px' }}
           />
           {filteredScales.length === 0 ? (
@@ -69,15 +69,20 @@ export const ScalesModal = forwardRef<ModalRef, ScalesModalProps>(
             <ScaleWrapper>
               {filteredScales.map((scale) => {
                 return (
-                  <ScaleButton
+                  <MultiButton
                     active={activeScale === scale}
-                    scale={scale}
-                    key={scale}
+                    Icon={FaPlay}
+                    label={scale}
                     onClick={() => {
                       if (onChangeScale) {
                         onChangeScale(scale);
                       }
                     }}
+                    onClickSub={() => {
+                      const scaleNotes = Scale.get(`C4 ${scale}`).notes;
+                      playNotes(scaleNotes);
+                    }}
+                    key={scale}
                   />
                 );
               })}
@@ -88,15 +93,3 @@ export const ScalesModal = forwardRef<ModalRef, ScalesModalProps>(
     );
   }
 );
-
-/* <ContentWrapper>
-                      <span>{scale.toUpperCase()}</span>
-                      <PlayButton
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          const scaleNotes = Scale.get(`C4 ${scale}`).notes;
-                          playNotes(scaleNotes);
-                        }}
-                      />
-                    </ContentWrapper> 
-                  </ControlButton> */
