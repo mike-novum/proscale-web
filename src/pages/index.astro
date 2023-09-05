@@ -3,22 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import { App } from "../app/App";
 ---
 
-<Layout title="ProScale">
+<Layout
+  title="ProScale - Learn music scales on guitar"
+  description="ProScale is an application that will help you learn the scales on your favorite instruments. Learn and memorize the location of notes on a guitar fretboard."
+>
   <App client:only />
 </Layout>
-<style>
-  html {
-    height: 100%;
-    background-color: #0c0c0c;
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100%;
-    background-color: #0c0c0c;
-    color: #fff;
-    box-sizing: border-box;
-  }
-</style>

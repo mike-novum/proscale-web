@@ -46,6 +46,11 @@ const EmptyList = styled.div`
   color: #32354f;
 `;
 
+const Header = styled.h1`
+  padding: 0px 32px;
+  font-family: 'Montserrat';
+`;
+
 export const ScalesModal = forwardRef<ModalRef, ScalesModalProps>(
   ({ onChangeScale, activeScale }, ref) => {
     const scales = useMemo(() => Scale.names(), []);
@@ -57,6 +62,7 @@ export const ScalesModal = forwardRef<ModalRef, ScalesModalProps>(
     return (
       <Modal overlay ref={ref}>
         <Container>
+          <Header>Scales</Header>
           <SearchBar
             value={search}
             onChange={onChangeSearch}

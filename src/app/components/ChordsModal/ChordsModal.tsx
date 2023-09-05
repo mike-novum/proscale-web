@@ -56,6 +56,10 @@ const EmptyList = styled.div`
   color: #32354f;
 `;
 
+const Header = styled.h1`
+  padding: 0px 32px;
+`;
+
 export const ChordsModal = forwardRef<ModalRef, ChordsModalProps>(
   ({ onChangeChord, activeChord, activeKey }, ref) => {
     const chords = useMemo(() => ChordDictionary.all(), []);
@@ -69,11 +73,12 @@ export const ChordsModal = forwardRef<ModalRef, ChordsModalProps>(
     return (
       <Modal overlay ref={ref}>
         <Container>
+          <Header>Chords</Header>
           <SearchBar
             value={search}
             onChange={onChangeSearch}
             placeholder="Enter chord name..."
-            style={{ margin: '0px 16px' }}
+            style={{ margin: '0px 32px' }}
           />
           {filteredChords.length === 0 ? (
             <EmptyList>Not found</EmptyList>
