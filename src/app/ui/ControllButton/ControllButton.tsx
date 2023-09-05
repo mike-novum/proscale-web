@@ -18,7 +18,7 @@ const ControlButtonWrapper = styled.button<ControlButtonWrapperProps>`
     props.formType === 'circle' ? 'center' : undefined};
 
   font-weight: 600;
-  color: ${(props) => props.theme.palette.text};
+  color: ${(props) => props.theme.colors.text};
   border: none;
   width: ${(props) => (props.formType === 'circle' ? '44px' : 'auto')};
   height: 44px;

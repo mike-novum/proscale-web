@@ -32,7 +32,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   justify-content: center;
   gap: 12px;
   font-weight: ${(props) => weights[props.size]};
-  color: ${(props) => props.theme.palette.text};
+  color: ${(props) => props.theme.colors.text};
   border: none;
   height: ${(props) => sizes[props.size]}px;
   width: ${(props) =>

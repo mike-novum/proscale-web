@@ -8,5 +8,5 @@ export const FretMarker = styled.div`
   width: ${FRET_MARKER_SIZE}px;
   height: ${FRET_MARKER_SIZE}px;
   border-radius: ${FRET_MARKER_SIZE / 2}px;
-  background-color: ${(props) => props.theme.palette.black2};
+  background-color: ${(props) => props.theme.colors.background};
 `;
