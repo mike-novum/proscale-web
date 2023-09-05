@@ -2,9 +2,9 @@
 import { useMemo, type FC } from 'react';
 import { Note } from 'tonal';
 import type { TuningItem } from 'lib/tune';
-import { useWindowSize } from 'utils/window';
-import { generateNeck } from 'utils/neck';
+import { generateNeck } from 'lib/neck';
 import { Note as NoteComponent } from 'components';
+import { useWindowSize } from 'lib/window';
 
 import {
   FretCell,

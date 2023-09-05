@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { MobileGuitar, DesktopGuitar } from 'components';
 import styled from 'styled-components';
-import { useWindowSize } from 'utils/window';
+import { useWindowSize } from 'lib/window';
 
 const Page = styled.div`
   width: 100%;
