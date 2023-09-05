@@ -1,8 +1,6 @@
 import { forwardRef, useMemo, useState } from 'react';
-import styled from 'styled-components';
 import { Scale } from 'tonal';
-import { Card } from 'ui/Card';
-import { Modal, ModalRef, SearchBar, MultiButton } from 'ui';
+import { Modal, ModalRef, SearchBar, MultiButton, ListPlaceholder } from 'ui';
 import { FaPlay } from 'react-icons/fa';
 import { playNotes } from 'lib/tone';
 
@@ -10,46 +8,6 @@ interface ScalesModalProps {
   activeScale?: string;
   onChangeScale?: (scaleName: string) => void;
 }
-
-const ScaleWrapper = styled.div`
-  border-radius: 1;
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  overflow: scroll;
-  padding: 16px 28px;
-`;
-
-export const ContentWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-`;
-
-const Container = styled(Card)`
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  width: 768px;
-  padding-top: 16px;
-  height: 75vh;
-`;
-
-const EmptyList = styled.div`
-  padding: 32px;
-  width: 100%;
-  height: fit-content;
-  text-align: center;
-  font-size: 22px;
-  font-weight: 600;
-  color: #32354f;
-`;
-
-const Header = styled.h1`
-  padding: 0px 32px;
-  font-family: 'Montserrat';
-`;
 
 export const ScalesModal = forwardRef<ModalRef, ScalesModalProps>(
   ({ onChangeScale, activeScale }, ref) => {
@@ -61,8 +19,8 @@ export const ScalesModal = forwardRef<ModalRef, ScalesModalProps>(
 
     return (
       <Modal overlay ref={ref}>
-        <Container>
-          <Header>Scales</Header>
+        <Modal.Container>
+          <Modal.Header>Scales</Modal.Header>
           <SearchBar
             value={search}
             onChange={onChangeSearch}
@@ -70,9 +28,9 @@ export const ScalesModal = forwardRef<ModalRef, ScalesModalProps>(
             style={{ margin: '0px 16px' }}
           />
           {filteredScales.length === 0 ? (
-            <EmptyList>Not found</EmptyList>
+            <ListPlaceholder>Not found</ListPlaceholder>
           ) : (
-            <ScaleWrapper>
+            <Modal.WrapContainer>
               {filteredScales.map((scale) => {
                 return (
                   <MultiButton
@@ -92,9 +50,9 @@ export const ScalesModal = forwardRef<ModalRef, ScalesModalProps>(
                   />
                 );
               })}
-            </ScaleWrapper>
+            </Modal.WrapContainer>
           )}
-        </Container>
+        </Modal.Container>
       </Modal>
     );
   }

@@ -7,10 +7,14 @@ import {
 } from 'react';
 import { createPortal } from 'react-dom';
 
-import type { ModalProps, ModalRef } from './types';
+import type { ModalComponent } from './types';
 import { ModalContent, ModalWrapper } from './components';
+import { Container, Header, WrapContainer } from './ui';
 
-export const Modal = forwardRef<ModalRef, ModalProps>(
+// TODO: Fix Type
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+export const Modal: ModalComponent = forwardRef(
   ({ overlay, onClosed, children }, ref) => {
     const [mounted, setMounted] = useState(false);
     const [closing, setClosing] = useState(false);
@@ -73,3 +77,7 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
     );
   }
 );
+
+Modal.Container = Container;
+Modal.Header = Header;
+Modal.WrapContainer = WrapContainer;
