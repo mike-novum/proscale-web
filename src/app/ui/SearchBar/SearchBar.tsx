@@ -44,10 +44,16 @@ const ButtonWrapper = styled.button`
 interface SearchBarProps {
   value: string;
   onChange: (value: string) => void;
+  placeholder?: string;
   style?: CSSProperties;
 }
 
-export const SearchBar: FC<SearchBarProps> = ({ value, onChange, style }) => {
+export const SearchBar: FC<SearchBarProps> = ({
+  value,
+  onChange,
+  placeholder,
+  style,
+}) => {
   const onClickSearch = () => {};
   //   const onClickClear = () => {
   //     onChange('');
@@ -64,7 +70,7 @@ export const SearchBar: FC<SearchBarProps> = ({ value, onChange, style }) => {
       <SearchInput
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder="Enter scale name..."
+        placeholder={placeholder}
       />
       {/* <ButtonWrapper onClick={onClickClear}>
         <ClearIcon />

@@ -12,6 +12,7 @@
       "browser": true
     },
     "rules": {
+      "no-plusplus":"off",
       "jsx-a11y/label-has-associated-control": [
         "error",
         {

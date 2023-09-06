@@ -1,10 +1,17 @@
 /* eslint-disable react/no-array-index-key */
 import { useMemo, type FC } from 'react';
-import { Note, Scale } from 'tonal';
+import { Note } from 'tonal';
 import type { TuningItem } from 'lib/tune';
-import { useWindowSize } from 'utils/window';
-import { generateNeck } from 'utils/neck';
+import {
+  generateNeck,
+  isBigFret,
+  calculateFretSize,
+  getFretWidth,
+  getNeckHeight,
+  isNoteInScale,
+} from 'lib/neck';
 import { Note as NoteComponent } from 'components';
+import { useWindowSize } from 'lib/window';
 
 import {
   FretCell,
@@ -15,30 +22,18 @@ import {
   NeckWrapper,
   Strings,
 } from './components';
-import {
-  isBigFret,
-  calculateFretWidth,
-  getFretWidth,
-  getNeckHeight,
-  isNoteInScale,
-} from './utils';
 import { FretMarker } from './components/FretMarker';
 
 export interface NeckProps {
   noteKey: string;
   tuning: TuningItem;
-  scale: string;
+  visibleNotes: string[];
 }
 
-export const Neck: FC<NeckProps> = ({ noteKey, tuning, scale }) => {
+export const Neck: FC<NeckProps> = ({ noteKey, tuning, visibleNotes }) => {
   const { width: screenWidth } = useWindowSize();
 
   const neckNotes = useMemo(() => generateNeck(tuning.notes), [tuning]);
-
-  const scaleNotes = useMemo(
-    () => Scale.get(`${noteKey} ${scale}`).notes,
-    [noteKey, scale]
-  );
 
   const fretSize = getFretWidth(screenWidth);
 
@@ -46,7 +41,7 @@ export const Neck: FC<NeckProps> = ({ noteKey, tuning, scale }) => {
     <NeckWrapper>
       <FretsWrapper height={getNeckHeight(tuning.notes.length)}>
         {neckNotes.map((fret, fretIndex) => {
-          const width = calculateFretWidth(
+          const width = calculateFretSize(
             fretIndex,
             fretSize > 80 ? 80 : fretSize
           );
@@ -63,7 +58,7 @@ export const Neck: FC<NeckProps> = ({ noteKey, tuning, scale }) => {
                   <NoteComponent
                     device="desktop"
                     isFirstFret={fretIndex === 0}
-                    isActive={isNoteInScale(note, scaleNotes)}
+                    isActive={isNoteInScale(note, visibleNotes)}
                     isTonica={noteKey === Note.pitchClass(note)}
                     note={note}
                   />
@@ -77,7 +72,7 @@ export const Neck: FC<NeckProps> = ({ noteKey, tuning, scale }) => {
       </FretsWrapper>
       <FretNumbersWrapper>
         {neckNotes.map((fret, fretIndex) => {
-          const width = calculateFretWidth(
+          const width = calculateFretSize(
             fretIndex,
             fretSize > 80 ? 80 : fretSize
           );

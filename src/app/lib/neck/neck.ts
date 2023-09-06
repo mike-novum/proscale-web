@@ -1,7 +1,9 @@
 import { Note, Range } from 'tonal';
 
-export const calculateFretWidth = (fretIndex: number, fretSize: number) =>
-  Math.trunc(-Math.sqrt(40 * fretIndex) + fretSize);
+import { useWindowSize } from '../window';
+
+export const calculateFretSize = (index: number, fretSize: number) =>
+  Math.trunc(-Math.sqrt(40 * index) + fretSize);
 
 export const getNeckHeight = (stringCount: number): number => {
   if (stringCount === 4) {
@@ -31,7 +33,6 @@ export const generateNeck = (tuningNotes: string[]): string[][] => {
 
   const mass: string[][] = [];
 
-  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < fretsCount; i++) {
     const fret: string[] = [];
 
@@ -91,3 +92,24 @@ export const isBigFret = (number: number): boolean =>
   number === 17 ||
   number === 19 ||
   number === 21;
+
+const KNEE_OFFSET = 16;
+
+export const useMobileNeckWidth = (stringsCount: number): number => {
+  const { width } = useWindowSize();
+
+  const maxWidth = width - KNEE_OFFSET * 6;
+
+  const ratio = 10;
+  if (stringsCount === 4) {
+    return maxWidth - 4 * ratio;
+  }
+  if (stringsCount === 6) {
+    return maxWidth - 2 * ratio;
+  }
+  if (stringsCount === 7) {
+    return maxWidth - 1 * ratio;
+  }
+
+  return maxWidth;
+};

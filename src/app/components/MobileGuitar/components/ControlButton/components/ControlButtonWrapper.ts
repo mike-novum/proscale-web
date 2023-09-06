@@ -13,7 +13,7 @@ export const ControlButtonWrapper = styled.button<ControlButtonWrapperProps>`
   justify-content: ${(props) =>
     props.formType === 'circle' ? 'center' : undefined};
 
-  color: ${(props) => props.theme.palette.text};
+  color: ${(props) => props.theme.colors.text};
   border: none;
 
   border-radius: 22px;

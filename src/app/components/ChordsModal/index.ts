@@ -1,0 +1,1 @@
+export { ChordsModal } from './ChordsModal';

@@ -1,13 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
-type WindowState = {
-  width: number;
-  height: number;
-  isMobile: boolean;
-  isDesktop: boolean;
-};
-
-const mobileWidth = 1024;
+import type { WindowState } from './type';
+import { mobileWidth } from './constants';
 
 export const useWindowSize = (): WindowState => {
   const [width, setWidth] = useState<number>(window.innerWidth);
