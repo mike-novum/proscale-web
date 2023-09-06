@@ -32,8 +32,6 @@ const desktopStyles = css`
   height: ${SIZE}px;
   border-radius: ${SIZE}px;
 
-  transition: 0.2s;
-
   &:hover {
     box-shadow: rgb(76 80 121) 0px 0px 20px 2px;
   }
@@ -44,25 +42,21 @@ const desktopStyles = css`
   }
 
   @media (max-width: 1366px) {
-    transition: 200ms;
     width: ${SIZE_M}px;
     height: ${SIZE_M}px;
     border-radius: ${SIZE_M}px;
   }
   @media (max-width: 1024px) {
-    transition: 200ms;
     width: ${SIZE}px;
     height: ${SIZE}px;
     border-radius: ${SIZE}px;
   }
   @media (max-width: 768px) {
-    transition: 200ms;
     width: ${SIZE_M}px;
     height: ${SIZE_M}px;
     border-radius: ${SIZE_M}px;
   }
   @media (max-width: 375px) {
-    transition: 200ms;
     width: ${SIZE_S}px;
     height: ${SIZE_S}px;
     border-radius: ${SIZE_S}px;
