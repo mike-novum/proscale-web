@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import styled from 'styled-components';
-
-import { isBigFret } from '../utils';
+import { isBigFret } from 'lib/neck';
 
 interface FretNumberProps {
   value: number;

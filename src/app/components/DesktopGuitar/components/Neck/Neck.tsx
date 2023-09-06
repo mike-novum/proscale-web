@@ -2,7 +2,14 @@
 import { useMemo, type FC } from 'react';
 import { Note } from 'tonal';
 import type { TuningItem } from 'lib/tune';
-import { generateNeck } from 'lib/neck';
+import {
+  generateNeck,
+  isBigFret,
+  calculateFretSize,
+  getFretWidth,
+  getNeckHeight,
+  isNoteInScale,
+} from 'lib/neck';
 import { Note as NoteComponent } from 'components';
 import { useWindowSize } from 'lib/window';
 
@@ -15,13 +22,6 @@ import {
   NeckWrapper,
   Strings,
 } from './components';
-import {
-  isBigFret,
-  calculateFretWidth,
-  getFretWidth,
-  getNeckHeight,
-  isNoteInScale,
-} from './utils';
 import { FretMarker } from './components/FretMarker';
 
 export interface NeckProps {
@@ -41,7 +41,7 @@ export const Neck: FC<NeckProps> = ({ noteKey, tuning, visibleNotes }) => {
     <NeckWrapper>
       <FretsWrapper height={getNeckHeight(tuning.notes.length)}>
         {neckNotes.map((fret, fretIndex) => {
-          const width = calculateFretWidth(
+          const width = calculateFretSize(
             fretIndex,
             fretSize > 80 ? 80 : fretSize
           );
@@ -72,7 +72,7 @@ export const Neck: FC<NeckProps> = ({ noteKey, tuning, visibleNotes }) => {
       </FretsWrapper>
       <FretNumbersWrapper>
         {neckNotes.map((fret, fretIndex) => {
-          const width = calculateFretWidth(
+          const width = calculateFretSize(
             fretIndex,
             fretSize > 80 ? 80 : fretSize
           );

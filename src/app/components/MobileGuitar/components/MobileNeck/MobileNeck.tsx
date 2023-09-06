@@ -2,7 +2,13 @@
 import { useMemo, type FC } from 'react';
 import type { TuningItem } from 'lib/tune';
 import { Note, Scale } from 'tonal';
-import { generateNeck, isNoteInScale } from 'lib/neck';
+import {
+  calculateFretSize,
+  isBigFret,
+  useMobileNeckWidth,
+  generateNeck,
+  isNoteInScale,
+} from 'lib/neck';
 import { Note as NoteComponent } from 'components/Note';
 
 import {
@@ -14,7 +20,6 @@ import {
   NeckWrapper,
   Strings,
 } from './components';
-import { calculateFretSize, isBigFret, useMobileNeckWidth } from './utils';
 import { FretMarker } from './components/FretMarker';
 
 export interface NeckProps {
