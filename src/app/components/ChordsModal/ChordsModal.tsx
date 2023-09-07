@@ -25,9 +25,14 @@ export const ChordsModal = forwardRef<ModalRef, ChordsModalProps>(
 
     const [search, onChangeSearch] = useState<string>('');
 
-    const filteredChords = chords.filter(
-      (chord) => chord.aliases.length > 0 && chord.aliases[0].includes(search)
-    );
+    const filteredChords = chords.filter((chord) => {
+      return (
+        chord.aliases.length > 0 &&
+        (activeKey + chord.aliases[0])
+          .toLowerCase()
+          .includes(search.toLocaleLowerCase())
+      );
+    });
 
     return (
       <Modal overlay ref={ref}>
