@@ -93,15 +93,23 @@ export const DesktopGuitar: FC = () => {
     }
   }, []);
 
-  const onChangeScale = useCallback((scaleName: string) => {
-    setScale(scaleName);
-    modalRef.current?.close();
-  }, []);
+  const onChangeScale = useCallback(
+    (scaleName: string) => {
+      setScale(scaleName);
+      clickMode('scale')();
+      modalRef.current?.close();
+    },
+    [clickMode]
+  );
 
-  const onChangeChord = useCallback((_chord: ChordType) => {
-    setChord(_chord);
-    chordsModalRef.current?.close();
-  }, []);
+  const onChangeChord = useCallback(
+    (_chord: ChordType) => {
+      setChord(_chord);
+      clickMode('chord')();
+      chordsModalRef.current?.close();
+    },
+    [clickMode]
+  );
 
   const scaleNotes = useMemo(
     () => Scale.get(`${key} ${scale}`).notes,
