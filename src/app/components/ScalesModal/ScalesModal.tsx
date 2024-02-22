@@ -3,6 +3,7 @@ import { Scale } from 'tonal';
 import { Modal, ModalRef, SearchBar, MultiButton, ListPlaceholder } from 'ui';
 import { FaPlay } from 'react-icons/fa';
 import { playNotes } from 'lib/tone';
+import { isIOS } from 'lib/platform';
 
 interface ScalesModalProps {
   activeScale?: string;
@@ -42,10 +43,14 @@ export const ScalesModal = forwardRef<ModalRef, ScalesModalProps>(
                         onChangeScale(scale);
                       }
                     }}
-                    onClickSub={() => {
-                      const scaleNotes = Scale.get(`C4 ${scale}`).notes;
-                      playNotes(scaleNotes);
-                    }}
+                    onClickSub={
+                      isIOS
+                        ? undefined
+                        : () => {
+                            const scaleNotes = Scale.get(`C4 ${scale}`).notes;
+                            playNotes(scaleNotes);
+                          }
+                    }
                     key={scale}
                   />
                 );
