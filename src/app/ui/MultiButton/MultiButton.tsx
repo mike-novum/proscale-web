@@ -31,8 +31,8 @@ export const MultiButton: FC<MultiButtonProps> = ({
       size="default"
       onClick={onClick}
       style={{
-        paddingLeft: 22,
-        paddingRight: 2,
+        paddingLeft: onClickSub ? 22 : 16,
+        paddingRight: onClickSub ? 2 : 16,
         textTransform: 'capitalize',
       }}
     >
