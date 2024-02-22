@@ -5,6 +5,7 @@ export const WrapContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
   padding: 16px 28px;
 `;
