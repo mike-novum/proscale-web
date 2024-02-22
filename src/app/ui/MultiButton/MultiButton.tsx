@@ -11,7 +11,7 @@ interface MultiButtonProps {
   label: string;
   description?: string;
   onClick: MouseEventHandler<HTMLButtonElement>;
-  onClickSub: MouseEventHandler<HTMLDivElement>;
+  onClickSub?: MouseEventHandler<HTMLDivElement>;
 }
 
 export const MultiButton: FC<MultiButtonProps> = ({
@@ -37,14 +37,17 @@ export const MultiButton: FC<MultiButtonProps> = ({
       }}
     >
       <span>{label}</span>
-      <SubButton
-        iconSize={iconSize}
-        Icon={Icon}
-        onClick={(e) => {
-          e.stopPropagation();
-          onClickSub(e);
-        }}
-      />
+
+      {onClickSub && (
+        <SubButton
+          iconSize={iconSize}
+          Icon={Icon}
+          onClick={(e) => {
+            e.stopPropagation();
+            onClickSub(e);
+          }}
+        />
+      )}
     </Container>
   );
 };

@@ -12,6 +12,7 @@ import {
   getChordNotes,
 } from 'lib/tonal';
 import { playChord } from 'lib/tone';
+import { isIOS } from 'lib/platform';
 
 interface ChordsModalProps {
   activeKey: string;
@@ -57,9 +58,13 @@ export const ChordsModal = forwardRef<ModalRef, ChordsModalProps>(
                     label={name}
                     description={getChordDescription(activeKey, chord)}
                     onClick={() => onChangeChord(chord)}
-                    onClickSub={() => {
-                      playChord(getChordNotes(activeKey, chord));
-                    }}
+                    onClickSub={
+                      isIOS
+                        ? undefined
+                        : () => {
+                            playChord(getChordNotes(activeKey, chord));
+                          }
+                    }
                     key={name}
                   />
                 );

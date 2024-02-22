@@ -10,9 +10,12 @@ interface TuningPickerProps {
 }
 
 const PickerWrapper = styled.div`
+  box-sizing: border-box;
+  padding: 0px 16px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  justify-content: center;
 `;
 
 const _TuningPicker: FC<TuningPickerProps> = ({
