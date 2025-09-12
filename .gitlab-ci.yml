@@ -1,4 +1,0 @@
-include:
-  - project: "novumweb/infrastructure"
-    ref: $CI_COMMIT_BRANCH
-    file: ".astro-static.yml"
