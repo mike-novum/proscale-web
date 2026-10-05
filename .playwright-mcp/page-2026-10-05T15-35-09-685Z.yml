@@ -1,0 +1,237 @@
+- generic [ref=e4]:
+  - generic [ref=e5]:
+    - button "6 string" [ref=e7] [cursor=pointer]
+    - button "7 string" [ref=e8] [cursor=pointer]
+    - button "8 string" [ref=e9] [cursor=pointer]
+    - button "Bass" [ref=e10] [cursor=pointer]
+    - button "Ukulele" [ref=e11] [cursor=pointer]
+  - generic [ref=e12]:
+    - button "STANDART" [ref=e13] [cursor=pointer]
+    - button "DROP D" [ref=e15] [cursor=pointer]
+    - button "DROP C" [ref=e17] [cursor=pointer]
+    - button "DROP B" [ref=e19] [cursor=pointer]
+    - button "OPEN C" [ref=e21] [cursor=pointer]
+    - button "DDD" [ref=e23] [cursor=pointer]
+    - button "DADGAD" [ref=e25] [cursor=pointer]
+    - button "DADDAD" [ref=e27] [cursor=pointer]
+    - button "OPEN D" [ref=e29] [cursor=pointer]
+    - button "OPEN G" [ref=e31] [cursor=pointer]
+  - generic [ref=e33]:
+    - generic [ref=e34]:
+      - generic [ref=e35]:
+        - generic [ref=e36]: E5
+        - generic [ref=e39]: B4
+        - generic [ref=e42]: G4
+        - generic [ref=e45]: D4
+        - generic [ref=e48]: A3
+        - generic [ref=e51]: E3
+      - generic [ref=e54]:
+        - generic [ref=e55]: F5
+        - generic [ref=e58]: C5
+        - generic [ref=e61]: Ab4
+        - generic [ref=e64]: Eb4
+        - generic [ref=e67]: Bb3
+        - generic [ref=e70]: F3
+      - generic [ref=e73]:
+        - generic [ref=e74]: Gb5
+        - generic [ref=e75]: Db5
+        - generic [ref=e76]: A4
+        - generic [ref=e77]: E4
+        - generic [ref=e78]: B3
+        - generic [ref=e79]: Gb3
+      - generic [ref=e80]:
+        - generic [ref=e81]: G5
+        - generic [ref=e84]: D5
+        - generic [ref=e87]: Bb4
+        - generic [ref=e90]: F4
+        - generic [ref=e93]: C4
+        - generic [ref=e96]: G3
+      - generic [ref=e100]:
+        - generic [ref=e101]: Ab5
+        - generic [ref=e104]: Eb5
+        - generic [ref=e107]: B4
+        - generic [ref=e108]: Gb4
+        - generic [ref=e109]: Db4
+        - generic [ref=e110]: Ab3
+      - generic [ref=e113]:
+        - generic [ref=e114]: A5
+        - generic [ref=e115]: E5
+        - generic [ref=e116]: C5
+        - generic [ref=e119]: G4
+        - generic [ref=e122]: D4
+        - generic [ref=e125]: A3
+      - generic [ref=e127]:
+        - generic [ref=e128]: Bb5
+        - generic [ref=e131]: F5
+        - generic [ref=e134]: Db5
+        - generic [ref=e135]: Ab4
+        - generic [ref=e138]: Eb4
+        - generic [ref=e141]: Bb3
+      - generic [ref=e144]:
+        - generic [ref=e145]: B5
+        - generic [ref=e146]: Gb5
+        - generic [ref=e147]: D5
+        - generic [ref=e150]: A4
+        - generic [ref=e151]: E4
+        - generic [ref=e152]: B3
+      - generic [ref=e154]:
+        - generic [ref=e155]: C6
+        - generic [ref=e158]: G5
+        - generic [ref=e161]: Eb5
+        - generic [ref=e164]: Bb4
+        - generic [ref=e167]: F4
+        - generic [ref=e170]: C4
+      - generic [ref=e173]:
+        - generic [ref=e174]: Db6
+        - generic [ref=e175]: Ab5
+        - generic [ref=e178]: E5
+        - generic [ref=e179]: B4
+        - generic [ref=e180]: Gb4
+        - generic [ref=e181]: Db4
+      - generic [ref=e183]:
+        - generic [ref=e184]: D6
+        - generic [ref=e187]: A5
+        - generic [ref=e188]: F5
+        - generic [ref=e191]: C5
+        - generic [ref=e194]: G4
+        - generic [ref=e197]: D4
+      - generic [ref=e200]:
+        - generic [ref=e201]: Eb6
+        - generic [ref=e204]: Bb5
+        - generic [ref=e207]: Gb5
+        - generic [ref=e208]: Db5
+        - generic [ref=e209]: Ab4
+        - generic [ref=e212]: Eb4
+      - generic [ref=e215]:
+        - generic [ref=e216]: E6
+        - generic [ref=e217]: B5
+        - generic [ref=e218]: G5
+        - generic [ref=e221]: D5
+        - generic [ref=e224]: A4
+        - generic [ref=e225]: E4
+      - generic [ref=e227]:
+        - generic [ref=e228]: F6
+        - generic [ref=e231]: C6
+        - generic [ref=e234]: Ab5
+        - generic [ref=e237]: Eb5
+        - generic [ref=e240]: Bb4
+        - generic [ref=e243]: F4
+      - generic [ref=e246]:
+        - generic [ref=e247]: Gb6
+        - generic [ref=e248]: Db6
+        - generic [ref=e249]: A5
+        - generic [ref=e250]: E5
+        - generic [ref=e251]: B4
+        - generic [ref=e252]: Gb4
+      - generic [ref=e253]:
+        - generic [ref=e254]: G6
+        - generic [ref=e257]: D6
+        - generic [ref=e260]: Bb5
+        - generic [ref=e263]: F5
+        - generic [ref=e266]: C5
+        - generic [ref=e269]: G4
+      - generic [ref=e273]:
+        - generic [ref=e274]: Ab6
+        - generic [ref=e277]: Eb6
+        - generic [ref=e280]: B5
+        - generic [ref=e281]: Gb5
+        - generic [ref=e282]: Db5
+        - generic [ref=e283]: Ab4
+      - generic [ref=e286]:
+        - generic [ref=e287]: A6
+        - generic [ref=e288]: E6
+        - generic [ref=e289]: C6
+        - generic [ref=e292]: G5
+        - generic [ref=e295]: D5
+        - generic [ref=e298]: A4
+      - generic [ref=e300]:
+        - generic [ref=e301]: Bb6
+        - generic [ref=e304]: F6
+        - generic [ref=e307]: Db6
+        - generic [ref=e308]: Ab5
+        - generic [ref=e311]: Eb5
+        - generic [ref=e314]: Bb4
+      - generic [ref=e317]:
+        - generic [ref=e318]: B6
+        - generic [ref=e319]: Gb6
+        - generic [ref=e320]: D6
+        - generic [ref=e323]: A5
+        - generic [ref=e324]: E5
+        - generic [ref=e325]: B4
+      - generic [ref=e327]:
+        - generic [ref=e328]: C7
+        - generic [ref=e331]: G6
+        - generic [ref=e334]: Eb6
+        - generic [ref=e337]: Bb5
+        - generic [ref=e340]: F5
+        - generic [ref=e343]: C5
+      - generic [ref=e346]:
+        - generic [ref=e347]: Db7
+        - generic [ref=e348]: Ab6
+        - generic [ref=e351]: E6
+        - generic [ref=e352]: B5
+        - generic [ref=e353]: Gb5
+        - generic [ref=e354]: Db5
+      - generic [ref=e356]:
+        - generic [ref=e357]: D7
+        - generic [ref=e360]: A6
+        - generic [ref=e361]: F6
+        - generic [ref=e364]: C6
+        - generic [ref=e367]: G5
+        - generic [ref=e370]: D5
+      - generic [ref=e373]:
+        - generic [ref=e374]: Eb7
+        - generic [ref=e377]: Bb6
+        - generic [ref=e380]: Gb6
+        - generic [ref=e381]: Db6
+        - generic [ref=e382]: Ab5
+        - generic [ref=e385]: Eb5
+      - generic [ref=e388]:
+        - generic [ref=e389]: E7
+        - generic [ref=e390]: B6
+        - generic [ref=e391]: G6
+        - generic [ref=e394]: D6
+        - generic [ref=e397]: A5
+        - generic [ref=e398]: E5
+    - generic [ref=e406]:
+      - generic [ref=e407]: "0"
+      - generic [ref=e409]: "1"
+      - generic [ref=e411]: "2"
+      - generic [ref=e413]: "3"
+      - generic [ref=e415]: "4"
+      - generic [ref=e417]: "5"
+      - generic [ref=e419]: "6"
+      - generic [ref=e421]: "7"
+      - generic [ref=e423]: "8"
+      - generic [ref=e425]: "9"
+      - generic [ref=e427]: "10"
+      - generic [ref=e429]: "11"
+      - generic [ref=e431]: "12"
+      - generic [ref=e433]: "13"
+      - generic [ref=e435]: "14"
+      - generic [ref=e437]: "15"
+      - generic [ref=e439]: "16"
+      - generic [ref=e441]: "17"
+      - generic [ref=e443]: "18"
+      - generic [ref=e445]: "19"
+      - generic [ref=e447]: "20"
+      - generic [ref=e449]: "21"
+      - generic [ref=e451]: "22"
+      - generic [ref=e453]: "23"
+      - generic [ref=e455]: "24"
+  - generic [ref=e457]:
+    - button "MINOR" [ref=e458] [cursor=pointer]
+    - button "Cm" [ref=e464] [cursor=pointer]
+    - generic [ref=e470]:
+      - button "C" [ref=e471] [cursor=pointer]
+      - button "Db" [ref=e473] [cursor=pointer]
+      - button "D" [ref=e475] [cursor=pointer]
+      - button "Eb" [ref=e477] [cursor=pointer]
+      - button "E" [ref=e479] [cursor=pointer]
+      - button "F" [ref=e481] [cursor=pointer]
+      - button "Gb" [ref=e483] [cursor=pointer]
+      - button "G" [ref=e485] [cursor=pointer]
+      - button "Ab" [ref=e487] [cursor=pointer]
+      - button "A" [ref=e489] [cursor=pointer]
+      - button "Bb" [ref=e491] [cursor=pointer]
+      - button "B" [ref=e493] [cursor=pointer]
